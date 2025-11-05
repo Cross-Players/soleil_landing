@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "title": "The Soleil Da Nang",
+    "description": "Wyndham Soleil Da Nang — apartments, facilities, news and contact"
+  },
+  "header": {
+    "menu": {
+      "introduction": "Introduction",
+      "connection": "Connection",
+      "partners": "Partners",
+      "facility": "Facilities",
+      "apartment": "Apartments",
+      "news": "News",
+      "gallery": "Gallery",
+      "contactUs": "Contact"
+    }
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "footer": {
+    "contact": "Contact"
+  }
+}
+

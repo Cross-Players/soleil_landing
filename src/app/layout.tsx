@@ -1,40 +1,43 @@
 import type { Metadata } from 'next'
-import { Bricolage_Grotesque } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Layout/Header'
-import Footer from '@/components/Layout/Footer'
 import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader';
-import SessionProviderComp from '@/components/nextauth/SessionProvider'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages, getTranslations } from 'next-intl/server'
 
-const font = Bricolage_Grotesque({ subsets: ["latin"] });
+const font = Montserrat({ subsets: ["latin"], weight: ["300","400","500","600","700","800"] });
 
-export const metadata: Metadata = {
-  title: 'The Soleil Đà Nẵng',
-  description: 'Wyndham Soleil Đà Nẵng — căn hộ, tiện ích, tin tức và liên hệ',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('meta')
+  return {
+    title: t('title'),
+    description: t('description')
+  }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-  session,
 }: Readonly<{
   children: React.ReactNode
-  session: any
 }>) {
+  const locale = await getLocale()
+  const messages = await getMessages()
+
   return (
-    <html lang='en'>
-      <body className={`${font.className} bg-white dark:bg-black antialiased`}>
+    <html lang={locale}>
+      <body className={`${font.className} bg-white dark:bg-black antialiased relative`}>
         <NextTopLoader color="#07be8a" />
-        <SessionProviderComp session={session}>
-          <ThemeProvider
-            attribute='class'
-            enableSystem={true}
-            defaultTheme='light'>
-            <Header />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </SessionProviderComp>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <ThemeProvider
+              attribute='class'
+              enableSystem={true}
+              defaultTheme='light'>
+              <Header />
+              {children}
+            </ThemeProvider>
+          </NextIntlClientProvider>
       </body>
     </html>
   )
