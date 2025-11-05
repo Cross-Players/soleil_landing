@@ -1,5 +1,6 @@
 import { NavLinks } from '@/types/navlink'
 import clsx from 'clsx'
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -10,32 +11,32 @@ interface NavLinkProps {
 
 const NavLink: React.FC<NavLinkProps> = ({ item, onClick }) => {
   const path = usePathname()
-  const itemLabelToPath = `/${item.label.toLowerCase().replace(/\s+/g, '-')}`
+  const locale = useLocale()
+  const t = useTranslations()
+
+  const itemLabelToPath = item.key
 
   const linkclasses = clsx(
-    'py-3 text-3xl sm:text-5xl font-medium text-white/40 rounded-full group-hover:text-primary',
+    'text-[13px] font-medium text-[#E3C284] rounded-full uppercase'
+  )
+
+  const underlineClasses = clsx(
+    'h-px bg-[#E3C284] w-0 transition-all duration-300',
     {
-      '!text-primary': item.href === path,
-      'text-primary': path.startsWith(itemLabelToPath),
+      'w-full': item.href === path || path.startsWith(itemLabelToPath),
+      'group-hover:w-full': true,
     }
   )
 
-  const liststyle = clsx(
-    'w-0 h-0.5 bg-primary transition-all duration-300',
-    {
-      '!block w-6 mr-4': item.href === path,
-      'block w-6': path.startsWith(itemLabelToPath),
-      'group-hover:block group-hover:w-6 group-hover:mr-4': true,
-    }
-  )
+  const href = locale === 'en' ? `/en${item.href === '/' ? '' : item.href}` : item.href
 
   return (
-    <li className='flex items-center group w-fit'>
-      <div className={liststyle} />
-      <Link href={item.href} className={linkclasses} onClick={onClick}>
-        {item.label}
+    <div className='group w-fit'>
+      <Link href={href} className={linkclasses} onClick={onClick}>
+        {t(`header.menu.${item.key}`)}
       </Link>
-    </li>
+      <div className={underlineClasses} />
+    </div>
   )
 }
 

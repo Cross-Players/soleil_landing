@@ -1,12 +1,19 @@
-import { NavLinks } from '@/types/navlink'
+import { NavLinks } from "@/types/navlink";
 
-export const navLinks: NavLinks[] = [
-  { label: 'Giới Thiệu', href: '/about' },
-  { label: 'Kết Nối', href: '/connectivity' },
-  { label: 'Đối Tác', href: '/partners' },
-  { label: 'Tiện Ích', href: '/amenities' },
-  { label: 'Căn Hộ', href: '/apartments' },
-  { label: 'Tin Tức', href: '/news' },
-  { label: 'Thư Viện', href: '/media' },
-  { label: 'Liên Hệ', href: '/contact' },
-]
+export const navLinks1: NavLinks[] = [
+  { key: "introduction", href: "/introduction" },
+  { key: "connection", href: "/connection" },
+  { key: "partners", href: "/partners" },
+  { key: "facility", href: "/facility" },
+];
+
+export const navLinks2: NavLinks[] = [
+  { key: "apartment", href: "/apartment" },
+  {
+    key: "news",
+    href: "/news",
+    children: [{ key: "media", href: "/media" }],
+  },
+  { key: "gallery", href: "/gallery" },
+  { key: "contactUs", href: "/contact-us" },
+];

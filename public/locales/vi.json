@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "title": "The Soleil Đà Nẵng",
+    "description": "Wyndham Soleil Đà Nẵng — căn hộ, tiện ích, tin tức và liên hệ"
+  },
+  "header": {
+    "menu": {
+      "introduction": "Giới thiệu",
+      "connection": "Kết nối",
+      "partners": "Đối tác",
+      "facility": "Tiện ích",
+      "apartment": "Căn hộ",
+      "news": "Tin tức",
+      "gallery": "Thư viện",
+      "contactUs": "Liên hệ"
+    }
+  },
+  "auth": {
+    "signIn": "Đăng nhập",
+    "signUp": "Đăng ký"
+  },
+  "footer": {
+    "contact": "Liên hệ"
+  }
+}
+
