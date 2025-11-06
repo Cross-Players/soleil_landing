@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel"
 import { useEffect, useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 const IMAGES = [
   "/images/home/banner-1.jpg",
@@ -16,6 +17,8 @@ const HomeBanner = () => {
   const [api, setApi] = useState<CarouselApi | null>(null)
   const [selectedIndex, setSelectedIndex] = useState(0)
   const autoplayTimer = useRef<NodeJS.Timeout | null>(null)
+
+  const t = useTranslations()
 
   useEffect(() => {
     if (!api) return
@@ -55,6 +58,7 @@ const HomeBanner = () => {
 
   return (
     <div className="w-screen h-screen">
+      <h1>{t('home.banner.title')}</h1>
       <Carousel opts={{ loop: true, align: 'start' }} className="w-full h-full" setApi={setApi}>
         <CarouselContent>
           {IMAGES.map((src, idx) => (
