@@ -1,5 +1,3 @@
-export { default } from '@/app/(site)/media/page'
-
 export default function MediaPage() {
   return (
     <main className="container mx-auto max-w-6xl px-4 py-28">
