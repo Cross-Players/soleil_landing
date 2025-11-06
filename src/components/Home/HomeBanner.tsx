@@ -17,6 +17,8 @@ const HomeBanner = () => {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const autoplayTimer = useRef<NodeJS.Timeout | null>(null)
 
+
+
   useEffect(() => {
     if (!api) return
 
@@ -55,6 +57,7 @@ const HomeBanner = () => {
 
   return (
     <div className="w-screen h-screen">
+      <h1>{t('home.banner.title')}</h1>
       <Carousel opts={{ loop: true, align: 'start' }} className="w-full h-full" setApi={setApi}>
         <CarouselContent>
           {IMAGES.map((src, idx) => (
