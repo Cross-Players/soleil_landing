@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
-import AnimateInView from '@/components/shared/Blog/AnimateInView';
+import AnimateInView from '@/components/shared/AnimateInView';
 
 // Định nghĩa dữ liệu cấu trúc cho các phần nội dung
 const introductionSections = [
