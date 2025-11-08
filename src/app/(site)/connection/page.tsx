@@ -34,17 +34,14 @@ const ConnectionPage = async () => {
     <div className="bg-white min-h-screen">
       {/* 1. Hero Section/Banner */}
       <div className="relative h-[400px] w-full overflow-hidden">
-        
-        {/* --- THAY ĐỔI ẢNH BANNER TẠI ĐÂY --- */}
         <Image 
-            src="/images/ketnot.jpg" // <-- ĐÃ ĐỔI TỪ 'banner-2.png' SANG 'ketnot.jpg'
+            src="/images/home/ketnoi.jpg" 
             alt={t('hero_title') as string}
             fill
             priority
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 100vw"
         />
-        {/* --- KẾT THÚC THAY ĐỔI --- */}
 
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <h1 className={`
@@ -61,7 +58,7 @@ const ConnectionPage = async () => {
       {/* 2. Main Content Sections (Với ảnh nền) */}
       <div className="relative isolate py-16 md:py-24"> 
         <Image
-            src="/images/background.png" 
+            src="/images/home/background.png" 
             alt="Background"
             fill
             className="-z-10 object-cover opacity-20"
