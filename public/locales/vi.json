@@ -67,5 +67,11 @@
     "location_golf_title": "CÁC SÂN GOLF",
     "location_golf_time": "CÁC SÂN GOLF",
     "location_golf_desc": "Là nơi dừng chân lý tưởng của các Golf thủ với các sân Golf lân cận như Montgomerie Links, Bà Nà Hills Golf Club, BRG Da Nang Golf."
+  },
+  "News": {
+    "hero_title": "TIN TỨC",
+    "pagination_prev": "Trang trước",
+    "pagination_next": "Trang sau",
+    "pagination_page": "Trang"
   }
 }
