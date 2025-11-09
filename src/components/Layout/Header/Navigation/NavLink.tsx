@@ -17,11 +17,11 @@ const NavLink: React.FC<NavLinkProps> = ({ item, onClick }) => {
   const itemLabelToPath = item.key
 
   const linkclasses = clsx(
-    'text-[13px] font-medium text-[#E3C284] rounded-full uppercase'
+    'text-[14px] font-medium text-[#E3C284] rounded-full uppercase hover:text-[#CC9A58]'
   )
 
   const underlineClasses = clsx(
-    'h-px bg-[#E3C284] w-0 transition-all duration-300',
+    'h-0.5 bg-[#CC9A58] w-0 transition-all duration-300',
     {
       'w-full': item.href === path || path.startsWith(itemLabelToPath),
       'group-hover:w-full': true,
