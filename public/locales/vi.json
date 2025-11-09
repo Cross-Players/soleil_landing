@@ -67,5 +67,18 @@
     "location_golf_title": "CÁC SÂN GOLF",
     "location_golf_time": "CÁC SÂN GOLF",
     "location_golf_desc": "Là nơi dừng chân lý tưởng của các Golf thủ với các sân Golf lân cận như Montgomerie Links, Bà Nà Hills Golf Club, BRG Da Nang Golf."
+  },
+  "Apartment": {
+    "hero_title": "CĂN HỘ",
+    "select_label": "CHỌN TẦNG",
+    "tab_5_23": "TẦNG 5 - 23",
+    "tab_27_45": "TẦNG 27 - 45",
+    "tab_47_48": "TẦNG 47 - 48",
+    "content_5_23_title": "MẶT BẰNG TỔNG THỂ TẦNG 5 - 23",
+    "content_5_23_desc": "Số căn hộ trên một tầng: 22",
+    "content_27_45_title": "MẶT BẰNG TỔNG THỂ TẦNG 27 - 45",
+    "content_27_45_desc": "Số căn hộ trên một tầng: 21",
+    "content_47_48_title": "MẶT BẰNG TỔNG THỂ TẦNG 47 - 48",
+    "content_47_48_desc": "Số căn hộ trên một tầng: 5"
   }
 }
