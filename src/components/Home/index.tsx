@@ -22,8 +22,8 @@ const Home = () => {
     HomeConnection,
     HomePartners,
     HomeUtilities,
-    HomeApartment,
-    HomeNews,
+    // HomeApartment,
+    // HomeNews,
     HomeGallery,
     HomeContact,
   ];
