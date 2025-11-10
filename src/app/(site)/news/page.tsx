@@ -13,8 +13,7 @@ const playfair = Playfair_Display({
   weight: ['700'],
 });
 
-// --- DỮ LIỆU 41 TIN TỨC (NHẬP TAY) ---
-// (Bạn hãy thay thế 'date' và 'imageSrc' bằng dữ liệu thật)
+// --- DỮ LIỆU 41 TIN TỨC ---
 const allNewsData = [
   { id: 1, title: "ĐIỀU KIỆN SỬ DỤNG THE SOLEIL ĐÀ NẴNG", date: "08/10/2025", imageSrc: "/images/news/news-20.jpg", href: "/news/1" },
   { id: 2, title: "Gosun Group ký kết hợp tác chiến lược dự án The Soleil Da Nang", date: "12/09/2025", imageSrc: "/images/news/new2.png", href: "/news/2" },
@@ -77,7 +76,7 @@ const NewsPage = () => {
       {/* 1. Hero Section/Banner */}
       <div className="relative h-[400px] w-full overflow-hidden">
         <Image 
-            src="/images/home/tintuc1.png " // Tên file ảnh banner của bạn
+            src="/images/home/tintuc1.png " 
             alt={t('hero_title')}
             fill
             priority
@@ -115,7 +114,6 @@ const NewsPage = () => {
                 delay={index * 100} 
                 className="group relative h-80 w-full rounded-lg overflow-hidden shadow-xl"
               >
-                {/* SỬA LỖI LINK: Đã xóa '#/' để dùng đúng link Next.js */}
                 <Link href={news.href} className="block h-full w-full">
                   {/* Ảnh nền */}
                   <Image
