@@ -65,9 +65,10 @@ const HomeContact = () => {
     try {
       document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=31536000`;
     } catch {}
-    const cleanPath = pathname.startsWith("/en") || pathname.startsWith("/vi")
-      ? pathname.replace(/^\/(en|vi)/, "") || "/"
-      : pathname || "/";
+    const cleanPath =
+      pathname.startsWith("/en") || pathname.startsWith("/vi")
+        ? pathname.replace(/^\/(en|vi)/, "") || "/"
+        : pathname || "/";
     const target =
       next === "en" ? `/en${cleanPath === "/" ? "" : cleanPath}` : cleanPath;
     window.location.assign(target);
@@ -165,36 +166,50 @@ const HomeContact = () => {
 
           {/* Bottom Section */}
           <div className="flex flex-col md:flex-row justify-between gap-8 max-w-7xl mx-auto">
+            
+            {/* === PHẦN ĐÃ SỬA === */}
             {/* Contact Information */}
             <div className="space-y-4">
               <h2 className="text-white font-bold text-lg uppercase">
                 {t("info.projectName")}
               </h2>
+              {/* Hiển thị thông tin mới từ vi.json */}
               <div className="space-y-2 text-white">
                 <p>
-                  <span className="font-semibold">{t("info.address")}:</span>{" "}
-                  {t("info.addressValue")}
+                  <span className="font-semibold">{t("info.hotline1_label")}:</span>{" "}
+                  <a href="tel:0345747138" className="hover:underline">
+                    {t("info.hotline1_value")}
+                  </a>
                 </p>
                 <p>
-                  <span className="font-semibold">{t("info.phone")}:</span>{" "}
-                  {t("info.phoneValue")}
+                  <span className="font-semibold">{t("info.hotline2_label")}:</span>{" "}
+                  <a href="tel:0826768386" className="hover:underline">
+                    {t("info.hotline2_value")}
+                  </a>
                 </p>
                 <p>
-                  <span className="font-semibold">{t("info.email")}:</span>{" "}
-                  {t("info.emailValue")}
+                  <span className="font-semibold">{t("info.email_label")}:</span>{" "}
+                  <a href="mailto:Thesoleildanangofficial@gmail.com" className="hover:underline">
+                    {t("info.email_value")}
+                  </a>
+                </p>
+                <p>
+                  <span className="font-semibold">{t("info.address_label")}:</span>{" "}
+                  {t("info.address_value")}
                 </p>
               </div>
               <Link
-                href="/terms"
+                href="/terms" // Bạn hãy đảm bảo trang /terms này tồn tại nhé
                 className="text-white hover:underline block mt-4"
               >
                 {t("info.termsOfUse")}
               </Link>
             </div>
+            {/* === KẾT THÚC PHẦN SỬA === */}
 
             {/* Social Media & Brochure */}
             <div className="space-y-6">
-              {/* Social Media Icons */}
+              {/* Social Media Icons (Link FB đã được cập nhật tự động từ vi.json) */}
               <div className="flex gap-4">
                 <a
                   href={t("social.facebook")}
