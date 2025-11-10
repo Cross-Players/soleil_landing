@@ -103,5 +103,49 @@
     "description-4": "Là một môi trường nghỉ dưỡng lý tưởng dành cho các gia đình, Wyndham Soleil Đà Nẵng <br /> có đầy đủ các khu vui chơi cho trẻ em như Game Room, khu giữ trẻ và đặc biệt là English Club <br /> để các gia đình có con nhỏ có thể an tâm nghỉ ngơi, thư giãn trong khi vẫn bảo đảm rằng <br /> con trẻ có những giờ phút vui thú và bổ ích nhất.",
     "description-5": "Là một khu phức hợp hoàn hảo, dự án Wyndham Soleil Đà Nẵng không thể thiếu <br /> một khu trung tâm mua sắm rộng lớn và sang trọng. Vị trí của khu vực mua sắm <br /> nằm hoàn toàn tại 3 tầng đầu tiên của tòa nhà, được hợp tác với các đối tác nước <br /> ngoài để triển khai và khai thác khu trung tâm thương mại đẳng cấp, tập trung <br /> những nhãn hiệu nổi tiếng . ",
     "description-6": "Không chỉ là một tổ hợp khách sạn - toà căn hộ cao cấp cùng với khu trung tâm thương mại <br /> và giải trí hiện đại, Wyndham Soleil Đà Nẵng còn là nơi lý tưởng để diễn ra các cuộc họp doanh <br /> nghiệp với các phòng hội nghị, phòng họp nhỏ được tích hợp tất cả các công nghệ hiện đại. <br /> Với vị trí vàng ngay tại trung tâm Đà Nẵng và tầm nhìn đẹp hướng biển, hoặc hướng sông, <br /> Wyndham Soleil Đà Nẵng hứa hẹn tạo nên một không gian làm việc đầy cảm hứng. "
+  },
+  "gallery": {
+    "title": "THƯ VIỆN",
+    "tabImages": "Hình ảnh",
+    "tabVideo": "Video",
+    "viewDetails": "XEM CHI TIẾT",
+    "videoComingSoon": "Video sắp ra mắt"
+  },
+  "contact": {
+    "title": "LIÊN HỆ VỚI CHÚNG TÔI",
+    "form": {
+      "name": "Họ và tên",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "message": "Tin nhắn",
+      "submit": "GỬI"
+    },
+    "errors": {
+      "nameRequired": "Vui lòng nhập họ và tên",
+      "emailRequired": "Vui lòng nhập email",
+      "emailInvalid": "Email không hợp lệ",
+      "phoneRequired": "Vui lòng nhập số điện thoại",
+      "messageRequired": "Vui lòng nhập tin nhắn"
+    },
+    "info": {
+      "projectName": "THE SOLEIL ĐÀ NẴNG",
+      "address": "Địa chỉ",
+      "addressValue": "Số 02 Phạm Văn Đồng, Phường An Hải, Đà Nẵng, Việt Nam",
+      "phone": "Điện thoại",
+      "phoneValue": "098.879.2206",
+      "email": "Email",
+      "emailValue": "info.wyndham@soleildanang.vn",
+      "termsOfUse": "ĐIỀU KIỆN SỬ DỤNG"
+    },
+    "social": {
+      "facebook": "https://facebook.com",
+      "instagram": "https://instagram.com",
+      "youtube": "https://youtube.com"
+    },
+    "brochure": {
+      "title": "TẢI VỀ BROCHURE",
+      "vietnamese": "TIẾNG VIỆT",
+      "english": "ENGLISH"
+    }
   }
 }
