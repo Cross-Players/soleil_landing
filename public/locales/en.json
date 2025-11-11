@@ -1,18 +1,18 @@
 {
   "meta": {
     "title": "The Soleil Da Nang",
-    "description": "Wyndham Soleil Da Nang — apartments, facilities, news and contact"
+    "description": "Wyndham Soleil Da Nang — apartments, amenities, news and contact"
   },
   "header": {
     "menu": {
       "introduction": "Introduction",
       "connection": "Connection",
       "partners": "Partners",
-      "facility": "Facilities",
-      "apartment": "Apartments",
+      "facility": "Facility",
+      "apartment": "Apartment",
       "news": "News",
       "gallery": "Gallery",
-      "contactUs": "Contact"
+      "contactUs": "Contact Us"
     }
   },
   "auth": {
@@ -20,7 +20,142 @@
     "signUp": "Sign Up"
   },
   "footer": {
-    "contact": "Contact"
+    "contact": "Contact",
+    "hotline1_label": "Hotline (Project Director):",
+    "hotline1_value": "0345747138 (Ms Nguyet)",
+    "hotline2_label": "Hotline (Project Manager):",
+    "hotline2_value": "0826768386 (Mr Du)",
+    "email_label": "Email:",
+    "email_value": "Thesoleildanangofficial@gmail.com",
+    "address_label": "Sales Office:",
+    "address_value": "194 Vo Nguyen Giap - Son Tra - DN",
+    "facebook_label": "Facebook:",
+    "facebook_value": "Thesoleildanang.wyndhamofficial"
+  },
+  "Introduction": {
+    "hero_title": "INTRODUCTION TO WYNDHAM SOLEIL DA NANG",
+    "main_heading": "SYMBOL OF THE MOST LIVEABLE CITY",
+    "section1_title": "Prime Location & Pioneering Aspiration",
+    "section1_content": "Wyndham Soleil Da Nang is a new icon of Da Nang City, built on the aspiration, will, and dedication of the developer PPC An Thinh Vietnam. The project is located in a central location, at the intersection of Pham Van Dong and Vo Nguyen Giap, less than a 1-minute walk from My Khe Beach, opposite East Sea Park.\n\nThis is one of the most strongly developing high-end hotel and apartment complexes in Central Vietnam and Vietnam as a whole, ensuring outstanding investment value.",
+    "section2_title": "World-Class Architecture & Scale",
+    "section2_content": "Wyndham Soleil Da Nang consists of 4 towers: 1 hotel tower and 3 apartment towers ranging from 50-57 stories, built to international standards. With a design concept representing the harmony between sky and earth, the 4 towers form an eternal coral reef, symbolizing a splendid Sun, a radiant sun illuminating the East Sea.\n\nThe project is the first complex in Da Nang with infinity pools and sky bridges, intelligently designed by the world-leading design firm Aedas from the UK.\n",
+    "section3_title": "Perfect View & Affluent Living",
+    "section3_content": "As the tallest building in Da Nang, Wyndham Soleil Da Nang offers a perfect view overlooking the entire surrounding landscape, giving customers a wonderful experience of 'viewing the whole city from every altitude'.\n\nThe project combines all elements from a prime location, classy design, modern amenities, to international management and operation services (Wyndham Hotel Group, Artelia) and a superior chain of utilities, promising an affluent lifestyle."
+  },
+  "Connection": {
+    "hero_title": "CONNECTION",
+    "main_heading": "GOLDEN LOCATION CONNECTION",
+    "location_mykhe_title": "MY KHE BEACH",
+    "location_mykhe_time": "MY KHE BEACH",
+    "location_mykhe_desc": "One of the 6 most charming beaches on the planet with smooth white sand. It takes less than 1 minute for you to immerse yourself in the clear blue water.",
+    "location_sontra_title": "SON TRA PENINSULA",
+    "location_sontra_time": "SON TRA PENINSULA",
+    "location_sontra_desc": "Discover the 'precious gem' of Da Nang, with Linh Ung Pagoda and the 67m high statue of Lady Buddha (Guan Yin).",
+    "location_airport_title": "INTERNATIONAL AIRPORT",
+    "location_airport_time": "INTERNATIONAL AIRPORT",
+    "location_airport_desc": "Da Nang International Airport is one of the three largest airports in Vietnam, fully meeting international standards.",
+    "location_hoian_title": "HOI AN ANCIENT TOWN",
+    "location_hoian_time": "HOI AN ANCIENT TOWN",
+    "location_hoian_desc": "Return to the world of a few hundred years ago, where the flow of time seems unable to bury the ancient atmosphere.",
+    "location_bana_title": "BA NA HILLS",
+    "location_bana_time": "BA NA HILLS",
+    "location_bana_desc": "A 'fairyland' with a cool climate all year round and the Golden Bridge, listed among the top 100 greatest places in the world.",
+    "location_myson_title": "MY SON SANCTUARY",
+    "location_myson_time": "MY SON SANCTUARY",
+    "location_myson_desc": "Explore the thousand-year history of the Champa Kingdom, recognized by UNESCO as a world cultural heritage.",
+    "location_hue_title": "HUE IMPERIAL CITY",
+    "location_hue_time": "HUE IMPERIAL CITY",
+    "location_hue_desc": "A region of charming and picturesque landscapes, full of allure yet still retaining the majestic, ancient features of a World Cultural Heritage.",
+    "location_golf_title": "GOLF COURSES",
+    "location_golf_time": "GOLF COURSES",
+    "location_golf_desc": "An ideal stop for golfers with nearby courses such as Montgomerie Links, Ba Na Hills Golf Club, BRG Da Nang Golf."
+  },
+  "Apartment": {
+    "hero_title": "APARTMENT",
+    "select_label": "SELECT FLOOR",
+    "tab_5_23": "FLOOR 5 - 23",
+    "tab_27_45": "FLOOR 27 - 45",
+    "tab_47_48": "FLOOR 47 - 48",
+    "content_5_23_title": "OVERALL LAYOUT FLOOR 5 - 23",
+    "content_5_23_desc": "Apartments per floor: 22",
+    "content_27_45_title": "OVERALL LAYOUT FLOOR 27 - 45",
+    "content_27_45_desc": "Apartments per floor: 21",
+    "content_47_48_title": "OVERALL LAYOUT FLOOR 47 - 48",
+    "content_47_48_desc": "Apartments per floor: 5"
+  },
+  "News": {
+    "hero_title": "NEWS",
+    "pagination_prev": "Previous",
+    "pagination_next": "Next",
+    "pagination_page": "Page"
+  },
+  "partners": {
+    "partners-title-1": "Design Unit Aedas",
+    "partners-description-1": "Aedas is one of the world's leading architectural design firms. The company is built on the philosophy that great design can only be produced by people who truly understand the culture and society of the community they are designing for. Aedas possesses top talent in the industry, always striving to learn and update with the latest information and proprietary methods to create world-class iconic designs. Wyndham Soleil Da Nang is the first project in Vietnam with an infinity pool and smart design by the Aedas team.",
+    "partners-title-2": "Operator Wyndham Hotel Group",
+    "partners-description-2": "With over 20 brands, 15,000 employees, and nearly 9,000 hotels in 80 countries, Wyndham Hotels Group is one of the world's leading hospitality and resort business groups. World-class service and unique experiences for each destination are the attractive elements that Wyndham Hotels Group brings to its customers. The values of Wyndham Hotels Group are carefully preserved: Integrity, Accountability, Inclusiveness, Caring, and Fun.",
+    "partners-title-3": "Consulting, Supervision, and Management Unit Artelia",
+    "partners-description-3": "Artelia Group is a large corporation from France, renowned in the fields of project management, construction management, and supervision consulting. The group has 75 offices in 36 countries with 3,500 employees worldwide. Artelia Group is a trusted partner of multinational corporations, international groups, and large companies. In 2006, Artelia Group marked its presence in the Vietnamese market by opening 2 offices in Hanoi and Ho Chi Minh City. To date, Artelia Vietnam has become a leading international consulting company in engineering and project management, especially in the fields of construction, infrastructure, water, industry, and environment in Vietnam."
+  },
+  "utilities": {
+    "title": "Facilities",
+    "title-1": "SPA AND GYM",
+    "title-2": "MODERN SWIMMING POOL",
+    "title-3": "RESTAURANTS AND BARS",
+    "title-4": "KIDS' PLAY AREA",
+    "title-5": "SHOPPING CENTER",
+    "title-6": "CONFERENCE CENTER",
+    "description-1": "The spa, gym, and yoga club systems are modernly equipped <br /> with a professional and dedicated team of instructors, promising <br /> to bring you the best support and most relaxing time.",
+    "description-2": "In addition to the pools at the podium, Wyndham Soleil Da Nang also features 4 infinity pools <br /> on the rooftop, a highlight that creates uniqueness and distinction in class for the project.",
+    "description-3": "The system of bars and restaurants is located at the podium. Especially, the restaurant on the sky bridge <br /> connecting the towers and on the rooftop promises to bring unique <br /> experiences as you enjoy afternoon tea, romantic dinners, or <br /> joyful moments with a cocktail while watching the beauty of the sea and sky of Da Nang City.",
+    "description-4": "As an ideal resort environment for families, Wyndham Soleil Da Nang <br /> offers a full range of play areas for children such as a Game Room, childcare area, and especially an English Club <br /> so that families with young children can rest and relax with peace of mind, while ensuring <br /> their children have the most enjoyable and beneficial hours.",
+    "description-5": "As a perfect complex, the Wyndham Soleil Da Nang project cannot lack <br /> a large and luxurious shopping center. The shopping area is <br /> located entirely on the first 3 floors of the building, partnered with foreign entities <br /> to deploy and operate a classy commercial center, featuring <br /> famous brands.",
+    "description-6": "Not just a high-end hotel-apartment complex with a modern shopping and entertainment center, <br /> Wyndham Soleil Da Nang is also an ideal place for corporate meetings <br /> with conference rooms and small meeting rooms integrated with all modern technologies. <br /> With a prime location in the center of Da Nang and beautiful views towards the sea <br /> or the river, Wyndham Soleil Da Nang promises to create an inspiring working space."
+  },
+  "gallery": {
+    "title": "GALLERY",
+    "tabImages": "Images",
+    "tabVideo": "Video",
+    "viewDetails": "VIEW DETAILS",
+    "videoComingSoon": "Video Coming Soon"
+  },
+  "contact": {
+    "title": "CONTACT US",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone number",
+      "message": "Message",
+      "submit": "SEND"
+    },
+    "errors": {
+      "nameRequired": "Please enter your full name",
+      "emailRequired": "Please enter your email",
+      "emailInvalid": "Invalid email",
+      "phoneRequired": "Please enter your phone number",
+      "messageRequired": "Please enter your message"
+    },
+    "info": {
+      "projectName": "THE SOLEIL DA NANG",
+      "termsOfUse": "TERMS OF USE",
+      "hotline1_label": "Hotline (Project Director)",
+      "hotline1_value": "0345747138 (Ms Nguyet)",
+      "hotline2_label": "Hotline (Project Manager)",
+      "hotline2_value": "0826768386 (Mr Du)",
+      "email_label": "Email",
+      "email_value": "Thesoleildanangofficial@gmail.com",
+      "address_label": "Sales Office",
+      "address_value": "194 Vo Nguyen Giap - Son Tra - DN"
+    },
+    "social": {
+      "facebook": "https://www.facebook.com/Thesoleildanang.wyndhamofficial",
+      "instagram": "https://instagram.com",
+      "youtube": "https://youtube.com"
+    },
+    "brochure": {
+      "title": "DOWNLOAD BROCHURE",
+      "vietnamese": "VIETNAMESE",
+      "english": "ENGLISH"
+    }
   }
 }
-
