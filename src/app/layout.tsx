@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader';
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages, getTranslations } from 'next-intl/server'
+import Toaster from '@/components/Toaster'
 
 const font = Montserrat({ subsets: ["latin"], weight: ["300","400","500","600","700","800"] });
 
@@ -36,6 +37,7 @@ export default async function RootLayout({
               defaultTheme='light'>
               <Header />
               {children}
+              <Toaster position="top-right" />
             </ThemeProvider>
           </NextIntlClientProvider>
       </body>

@@ -7,6 +7,7 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
+import toast from "react-hot-toast";
 
 const HomeContact = () => {
   const t = useTranslations("contact");
@@ -19,6 +20,7 @@ const HomeContact = () => {
     message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -30,10 +32,11 @@ const HomeContact = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
 
+    // Validation
     if (!formData.name.trim()) {
       newErrors.name = t("errors.nameRequired");
     }
@@ -54,11 +57,54 @@ const HomeContact = () => {
       return;
     }
 
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setErrors({});
+    // Submit to API
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/submit-contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      // Success
+      toast.success(
+        locale === "vi"
+          ? "Gửi form thành công! Cảm ơn bạn đã liên hệ."
+          : "Form submitted successfully! Thank you for contacting us."
+      );
+      
+      // Reset form
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setErrors({});
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      
+      // Show more helpful error message
+      if (errorMessage.includes("GOOGLE_SCRIPT_URL") || errorMessage.includes("not configured")) {
+        toast.error(
+          locale === "vi"
+            ? "Cấu hình chưa hoàn tất. Vui lòng kiểm tra file .env.local và xem hướng dẫn trong GOOGLE_SHEETS_SETUP.md"
+            : "Configuration incomplete. Please check your .env.local file and see GOOGLE_SHEETS_SETUP.md for instructions"
+        );
+      } else {
+        toast.error(
+          locale === "vi"
+            ? "Có lỗi xảy ra. Vui lòng thử lại sau."
+            : "An error occurred. Please try again later."
+        );
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const switchTo = (next: "en" | "vi") => {
@@ -153,12 +199,17 @@ const HomeContact = () => {
                 )}
               </div>
 
-              <div className="flex justify-center">
+              <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="border-2 border-white text-white px-8 py-2 rounded-md hover:bg-white hover:text-[#1a4d4d] transition-colors duration-300 uppercase"
+                  disabled={isSubmitting}
+                  className="border-2 border-white text-white px-8 py-2 rounded-md hover:bg-white hover:text-[#1a4d4d] transition-colors duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {t("form.submit")}
+                  {isSubmitting
+                    ? locale === "vi"
+                      ? "Đang gửi..."
+                      : "Submitting..."
+                    : t("form.submit")}
                 </button>
               </div>
             </div>

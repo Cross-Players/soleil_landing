@@ -19,10 +19,6 @@ pnpm-debug.log*
 .vscode/
 .idea/
 
-# Env
-.env
-.env.*
-
 # Build artifacts
 coverage/
 *.tsbuildinfo
