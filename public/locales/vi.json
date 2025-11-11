@@ -20,7 +20,17 @@
     "signUp": "Đăng ký"
   },
   "footer": {
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "hotline1_label": "Hotline (GĐDA):",
+    "hotline1_value": "0345747138 (Ms Nguyệt)",
+    "hotline2_label": "Hotline (QLDA):",
+    "hotline2_value": "0826768386 (Mr Dự)",
+    "email_label": "Email:",
+    "email_value": "Thesoleildanangofficial@gmail.com",
+    "address_label": "VPBH:",
+    "address_value": "194 Võ Nguyên Giáp - Sơn Trà - ĐN",
+    "facebook_label": "Facebook:",
+    "facebook_value": "Thesoleildanang.wyndhamofficial"
   },
   "Introduction": {
     "hero_title": "GIỚI THIỆU WYNDHAM SOLEIL ĐÀ NẴNG",
@@ -35,35 +45,27 @@
   "Connection": {
     "hero_title": "KẾT NỐI",
     "main_heading": "KẾT NỐI VỊ TRÍ VÀNG",
-    
     "location_mykhe_title": "BÃI BIỂN MỸ KHÊ",
     "location_mykhe_time": "BÃI BIỂN MỸ KHÊ",
     "location_mykhe_desc": "1 trong 6 bãi biển quyến rũ nhất hành tinh với bờ cát trắng mịn. Quý khách chỉ mất chưa đến 1 phút để đắm mình dưới làn nước trong xanh.",
-    
     "location_sontra_title": "BÁN ĐẢO SƠN TRÀ",
     "location_sontra_time": "BÁN ĐẢO SƠN TRÀ",
     "location_sontra_desc": "Khám phá 'viên ngọc quý' của Đà Nẵng, với Chùa Linh Ứng và tượng Phật Quán Thế Âm cao nhất Việt Nam 67m.",
-
     "location_airport_title": "SÂN BAY QUỐC TẾ",
     "location_airport_time": "SÂN BAY QUỐC TẾ",
     "location_airport_desc": "Sân bay quốc tế Đà Nẵng là một trong ba sân bay lớn nhất tại Việt Nam, đáp ứng đầy đủ các tiêu chuẩn quốc tế.",
-
     "location_hoian_title": "PHỐ CỔ HỘI AN",
     "location_hoian_time": "PHỐ CỔ HỘI AN",
     "location_hoian_desc": "Quay về thế giới của vài trăm năm về trước, nơi dường như dòng chảy của thời gian chẳng thể nào vùi lấp đi không khí cổ xưa.",
-    
     "location_bana_title": "BÀ NÀ NÚI CHÚA",
     "location_bana_time": "BÀ NÀ NÚI CHÚA",
     "location_bana_desc": "'Chốn bồng lai tiên cảnh' với khí hậu mát mẻ quanh năm và Cầu Vàng lọt top 100 điểm đến tuyệt vời nhất thế giới.",
-
     "location_myson_title": "THÁNH ĐỊA MỸ SƠN",
     "location_myson_time": "THÁNH ĐỊA MỸ SƠN",
     "location_myson_desc": "Khám phá lịch sử ngàn năm của Vương quốc Chăm-pa, được UNESCO công nhận là di sản văn hoá thế giới.",
-
     "location_hue_title": "CỐ ĐÔ HUẾ",
     "location_hue_time": "CỐ ĐÔ HUẾ",
     "location_hue_desc": "Vùng danh lam thắng cảnh kỳ thú hữu tình, đầy sức quyến rũ nhưng vẫn đầy nét uy nghi, cổ kính của di sản văn hóa Thế giới.",
-
     "location_golf_title": "CÁC SÂN GOLF",
     "location_golf_time": "CÁC SÂN GOLF",
     "location_golf_desc": "Là nơi dừng chân lý tưởng của các Golf thủ với các sân Golf lân cận như Montgomerie Links, Bà Nà Hills Golf Club, BRG Da Nang Golf."
@@ -79,13 +81,14 @@
     "content_27_45_title": "MẶT BẰNG TỔNG THỂ TẦNG 27 - 45",
     "content_27_45_desc": "Số căn hộ trên một tầng: 21",
     "content_47_48_title": "MẶT BẰNG TỔNG THỂ TẦNG 47 - 48",
-    "content_47_48_desc": "Số căn hộ trên một tầng: 5"  },
-   "News": {
+    "content_47_48_desc": "Số căn hộ trên một tầng: 5"
+  },
+  "News": {
     "hero_title": "TIN TỨC",
     "pagination_prev": "Trang trước",
     "pagination_next": "Trang sau",
     "pagination_page": "Trang"
-  }, 
+  },
   "partners": {
     "partners-title-1": "Đơn vị thiết kế Aedas",
     "partners-description-1": "Aedas là một trong những công ty thiết kế kiến trúc hàng đầu thế giới. Công ty được xây dựng từ triết lý thiết kế tuyệt vời chỉ được sản sinh bởi những con người thực sự hiểu về văn hóa và xã hội mà cộng đồng sinh sống trong đó xây dựng. Aedas sở hữu những tài năng hàng đầu trong ngành, luôn nỗ lực học hỏi và cập nhật thông tin mới nhất và phương pháp độc quyền để cho ra đời những thiết kế biểu tượng thế giới. Wyndham Soleil Đà Nẵng là dự án đầu tiên ở Việt Nam với hồ bơi vô cực và thiết kế thông minh bởi đội ngũ Aedas.",
@@ -94,7 +97,6 @@
     "partners-title-3": "Đơn vị tư vấn, giám sát và quản lý Artelia",
     "partners-description-3": "Artelia Group là Tập đoàn lớn đến từ Pháp nổi tiếng trong lĩnh vực quản lý dự án, quản lý thi công, tư vấn giám sát.Tập đoàn có 75 văn phòng tại 36 quốc gia với 3500 nhân viên trên thế giới. Artelia Group là đối tác tín nhiệm của các tập đoàn đa quốc gia, tập đoàn Quốc tế, các công ty lớn. Năm 2006, Artelia Group đánh dấu sự xuất hiện tại thị trường Việt Nam bằng việc khai trương 2 văn phòng tại Hà Nội và TP. Hồ Chí Minh. Đến nay, Artelia Việt Nam đã trở thành công ty tư vấn quốc tế về kỹ thuật và quản lý dự án đặc biệt là trong lĩnh vực xây dựng, cơ sở hạ tầng, nước, công nghiệp và môi trường hàng đầu tại Việt Nam."
   },
-
   "utilities": {
     "title": "Tiện ích",
     "title-1": "SPA VÀ PHÒNG TẬP GYM",
@@ -104,7 +106,7 @@
     "title-5": "TRUNG TÂM MUA SẮM",
     "title-6": "TRUNG TÂM HỘI NGHỊ",
     "description-1": "Hệ thống spa, phòng tập gym và yoga club được trang bị hiện đại <br /> với đội ngũ huấn luyện viên chuyên nghiệp và tận tâm, hứa hẹn <br /> đem đến cho bạn sự hỗ trợ tốt nhất và thời gian thư giãn nhất.",
-    "description-2": "Ngoài các bể bơi tại khối đế, Wyndham Soleil Đà Nẵng còn sở hữu 4 bể bơi tràn <br /> trên tầng thượng, là một điểm nhấn  tạo sự độc đáo và khác biệt về đẳng cấp cho dự án. ",
+    "description-2": "Ngoài các bể bơi tại khối đế, Wyndham Soleil Đà Nẵng còn sở hữu 4 bể bơi tràn <br /> trên tầng thượng, là một điểm nhấn  tạo sự độc đáo và khác biệt về đẳng cấp cho dự án. ",
     "description-3": "Hệ thống các quán bar, nhà hàng nằm tại khối đế. Đặc biệt, nhà hàng tại cầu nối <br /> giữa các toà nhà và trên tầng thượng hứa hẹn sẽ đem đến cho các bạn những trải <br /> nghiệm độc đáo khi vừa thưởng thức trà chiều, những bữa tối lãng mạn hay những <br /> phút giây vui vẻ bên ly cocktail và ngắm nhìn vẻ đẹp của biển trời Thành phố Đà Nẵng. ",
     "description-4": "Là một môi trường nghỉ dưỡng lý tưởng dành cho các gia đình, Wyndham Soleil Đà Nẵng <br /> có đầy đủ các khu vui chơi cho trẻ em như Game Room, khu giữ trẻ và đặc biệt là English Club <br /> để các gia đình có con nhỏ có thể an tâm nghỉ ngơi, thư giãn trong khi vẫn bảo đảm rằng <br /> con trẻ có những giờ phút vui thú và bổ ích nhất.",
     "description-5": "Là một khu phức hợp hoàn hảo, dự án Wyndham Soleil Đà Nẵng không thể thiếu <br /> một khu trung tâm mua sắm rộng lớn và sang trọng. Vị trí của khu vực mua sắm <br /> nằm hoàn toàn tại 3 tầng đầu tiên của tòa nhà, được hợp tác với các đối tác nước <br /> ngoài để triển khai và khai thác khu trung tâm thương mại đẳng cấp, tập trung <br /> những nhãn hiệu nổi tiếng . ",
@@ -117,6 +119,7 @@
     "viewDetails": "XEM CHI TIẾT",
     "videoComingSoon": "Video sắp ra mắt"
   },
+  
   "contact": {
     "title": "LIÊN HỆ VỚI CHÚNG TÔI",
     "form": {
@@ -133,18 +136,26 @@
       "phoneRequired": "Vui lòng nhập số điện thoại",
       "messageRequired": "Vui lòng nhập tin nhắn"
     },
+    
     "info": {
       "projectName": "THE SOLEIL ĐÀ NẴNG",
-      "address": "Địa chỉ",
-      "addressValue": "Số 02 Phạm Văn Đồng, Phường An Hải, Đà Nẵng, Việt Nam",
-      "phone": "Điện thoại",
-      "phoneValue": "098.879.2206",
-      "email": "Email",
-      "emailValue": "info.wyndham@soleildanang.vn",
-      "termsOfUse": "ĐIỀU KIỆN SỬ DỤNG"
+      "termsOfUse": "ĐIỀU KIỆN SỬ DỤNG",
+      
+      "hotline1_label": "Hotline (GĐDA)",
+      "hotline1_value": "0345747138 (Ms Nguyệt)",
+      
+      "hotline2_label": "Hotline (QLDA)",
+      "hotline2_value": "0826768386 (Mr Dự)",
+      
+      "email_label": "Email",
+      "email_value": "Thesoleildanangofficial@gmail.com",
+      
+      "address_label": "VPBH",
+      "address_value": "194 Võ Nguyên Giáp - Sơn Trà - ĐN"
     },
+    
     "social": {
-      "facebook": "https://facebook.com",
+      "facebook": "https://www.facebook.com/Thesoleildanang.wyndhamofficial",
       "instagram": "https://instagram.com",
       "youtube": "https://youtube.com"
     },
