@@ -164,14 +164,35 @@ const Header: React.FC = () => {
           </div>
         </div>
       </nav>
-      <div className="lg:block hidden absolute right-2 top-2">
+
+      {/* === VỊ TRÍ 1 (DESKTOP) === */}
+      <div className="lg:flex hidden absolute right-2 top-2 flex-col items-end gap-2">
         <LanguageSwitcher className="hidden text-white md:flex" />
+        
+        <Link
+          href="https://vrclickstudio.vn/public/vr/soleil/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Xem VR 360"
+          className="flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-white/10"
+        >
+          <Image
+            src="/images/icon-360.png" // <-- ĐÃ SỬA ĐƯỜNG DẪN NÀY
+            alt="VR 360"
+            width={28}
+            height={28}
+            className="h-7 w-7"
+          />
+        </Link>
       </div>
+      {/* === KẾT THÚC SỬA === */}
+
 
       {navbarOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black/50 z-40 lg:hidden" />
       )}
 
+      {/* Menu slide-out (Mobile) */}
       <div
         ref={sideMenuRef}
         className={`fixed top-0 right-0 h-full w-full bg-dark shadow-lg transition-transform duration-300 max-w-2xl lg:hidden ${
@@ -212,6 +233,28 @@ const Header: React.FC = () => {
                 <li className="mt-6">
                   <LanguageSwitcher className="text-white" />
                 </li>
+
+                {/* === VỊ TRÍ 2 (MOBILE) === */}
+                <li className="mt-4">
+                  <Link
+                    href="https://vrclickstudio.vn/public/vr/soleil/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-white/80 hover:text-white transition-colors"
+                    onClick={() => setNavbarOpen(false)} // Đóng menu khi bấm
+                  >
+                    <Image
+                      src="/images/icon-360.png" // <-- ĐÃ SỬA ĐƯỜNG DẪN NÀY
+                      alt="VR 360"
+                      width={24}
+                      height={24}
+                      className="h-6 w-6"
+                    />
+                    <span className="text-lg font-medium uppercase">VR 360</span>
+                  </Link>
+                </li>
+                {/* === KẾT THÚC SỬA === */}
+
                 {[...navLinks1, ...navLinks2].map((item, index) => (
                   <NavLink
                     key={index}
