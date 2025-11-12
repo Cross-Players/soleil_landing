@@ -4,7 +4,7 @@ This guide will help you set up the Google Sheets integration for the contact fo
 
 ## Step 1: Deploy Google Apps Script
 
-1. Open your Google Sheet: https://docs.google.com/spreadsheets/d/1416L7_6sxvV61jw46U6brCIJ8eZ23ZaVFBh3JU3khB4/edit?gid=0#gid=0
+1. Open your Google Sheet: example: https://docs.google.com/spreadsheets/d/1416L7_6sxvV61jw46U6brCIJ8eZ23ZaVFBh3JU3khB4/edit?gid=0#gid=0
 
 2. Go to **Extensions** > **Apps Script**
 
@@ -26,7 +26,7 @@ This guide will help you set up the Google Sheets integration for the contact fo
 
 ## Step 2: Configure Environment Variable
 
-1. Create a `.env.local` file in the project root (if it doesn't exist)
+1. Create a `.env` file in the project root (if it doesn't exist)
 
 2. Add the following line with your Web App URL:
    ```
