@@ -122,3 +122,24 @@ section {
   pointer-events: none;
   animation: IconUtilitisActive 1.5s ease-out 0.4s infinite normal none running;
 }
+
+/* === BẮT ĐẦU CODE CHO HIỆU ỨNG SÓNG (PULSE) === */
+@keyframes pulse-radar {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-radar {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px; /* rounded-full */
+  animation: pulse-radar 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  background-color: currentColor; /* Tự động lấy màu chữ (text-blue-500, v.v.) */
+  z-index: 0; /* Nằm dưới icon */
+}
