@@ -6,10 +6,10 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/com
 import { useEffect, useRef, useState } from 'react'
 
 const IMAGES = [
-  "/images/home/banner-1.jpg",
-  "/images/home/banner-2.png",
-  "/images/home/banner-3.jpg",
-  "/images/home/banner-4.jpg",
+  "/images/home/banner-5.jpg",
+  "/images/home/banner-6.jpg",
+  "/images/home/banner-7.jpg",
+  "/images/home/banner-8.jpg",
 ]
 
 const HomeBanner = () => {
