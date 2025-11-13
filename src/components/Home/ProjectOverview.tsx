@@ -6,9 +6,9 @@ import Link from "next/link";
 
 const ProjectOverview = () => {
   const projectOverviewImage =
-    "/images/home/project-overview.png"; 
-  const newStaticImage =
     "/images/home/updatevideo.jpg"; 
+  const newStaticImage =
+    "/images/home/project-overview.png"; 
 
   return (
     <div
@@ -23,7 +23,7 @@ const ProjectOverview = () => {
       }}
     >
       <div className="w-full h-full px-4 lg:px-0 py-14 flex flex-col lg:flex-row justify-center lg:justify-between items-center lg:items-start gap-8 lg:gap-12">
-            <div className="lg:w-9/10 w-full lg:h-full flex flex-col gap-8 min-h-0">
+            <div className="lg:w-4/10 w-full lg:h-full flex flex-col gap-8 min-h-0">
           <div className="flex-1 min-h-0 flex items-start">
             <Image
               src={projectOverviewImage}
@@ -41,7 +41,7 @@ const ProjectOverview = () => {
             XEM CHI TIẾT
           </Link>
         </div>
-        <div className="lg:w-4/10 w-full lg:flex relative flex-col justify-center items-center pr-4 lg:pr-8"> 
+        <div className="lg:w-8/10 w-full lg:flex relative flex-col justify-center items-center pr-4 lg:pr-8"> 
           <div className="relative w-full rounded-lg overflow-hidden shadow-2xl">
             <Image
               src={newStaticImage} 

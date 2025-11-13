@@ -10,7 +10,10 @@ import {
   CarouselApi,
   CarouselContent,
   CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
 } from "@/components/ui/carousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const UTILITIES = [
   {
@@ -78,7 +81,7 @@ const HomeUtilities = () => {
     <div className="w-full h-full">
       <Carousel
         opts={{ loop: true, align: "start" }}
-        className="w-full h-full"
+        className="w-full h-full" // Add 'relative' for button positioning
         setApi={setApi}
       >
         <CarouselContent>
@@ -96,9 +99,21 @@ const HomeUtilities = () => {
                   backgroundRepeat: "no-repeat",
                 }}
               >
-                <div className="text-center text-white z-[5] px-4">
+                {/* Dark overlay for better text readability */}
+                <div className="absolute inset-0 bg-black/30 z-0" />
+                
+                {/* === TEXT BLOCK (MODIFIED) === */}
+                <div className="text-center text-white z-[5] px-4 max-w-xs md:max-w-md lg:max-w-lg mx-auto">
+                  
+                  {/* --- 1. ADDED UTILITY TITLE (Visible on Mobile) --- */}
+                  <h3 className="text-xl lg:text-2xl font-bold uppercase mb-4">
+                    {t(utility.title)}
+                  </h3>
+                  {/* --- END OF ADDED TITLE --- */}
+
                   <div
-                    className="text-[20px] leading-[40px] font-normal"
+                    // Responsive font size
+                    className="text-base leading-relaxed lg:text-[20px] lg:leading-[40px] font-normal"
                     dangerouslySetInnerHTML={{
                       __html: t(
                         utility.description
@@ -106,17 +121,39 @@ const HomeUtilities = () => {
                     }}
                   />
                 </div>
+                {/* === END OF TEXT BLOCK === */}
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
 
-        <h1 className="pt-0 mt-[30px] text-[28px] font-black leading-[50px] absolute top-[100px] left-1/2 -translate-x-1/2 text-white text-center after:content-[''] after:w-[100px] after:h-[2px] after:bg-white after:bottom-0 after:left-1/2 after:absolute after:-translate-x-1/2">
+        {/* Responsive Main Title */}
+        <h1 
+          className="
+            font-black text-white text-center 
+            absolute left-1/2 -translate-x-1/2 
+            after:content-[''] after:w-[100px] after:h-[2px] after:bg-white 
+            after:bottom-0 after:left-1/2 after:absolute after:-translate-x-1/2
+            
+            pb-4 pt-0
+            text-2xl top-16 /* Mobile: 2xl font, 64px from top */
+            lg:text-[28px] lg:top-[100px] lg:mt-[30px] /* Desktop: 28px font, 100px from top */
+          "
+        >
           {t("title")}
         </h1>
 
-        {/* Dots */}
-        <div className="absolute h-[510px] w-[60px] top-1/2 left-0 block z-[1000] [transform:matrix(1,0,0,1,250,-255)] before:content-[''] before:w-[1px] before:h-[calc(100%+120px)] before:left-1/2 before:-top-[60px] before:absolute before:bg-white before:-translate-x-1/2">
+        {/* Vertical Dot Navigation (Hidden on Mobile) */}
+        <div 
+          className="
+            hidden lg:block /* <-- This hides it on mobile */
+            absolute h-[510px] w-[60px] top-1/2 left-0 z-[1000] 
+            [transform:matrix(1,0,0,1,250,-255)] 
+            before:content-[''] before:w-[1px] before:h-[calc(100%+120px)] 
+            before:left-1/2 before:-top-[60px] before:absolute before:bg-white 
+            before:-translate-x-1/2
+          "
+        >
           {UTILITIES.map((utility, i) => (
             <div
               key={i}
@@ -147,6 +184,29 @@ const HomeUtilities = () => {
             </div>
           ))}
         </div>
+
+        {/* Arrow Buttons (Visible on all sizes) */}
+        <CarouselPrevious 
+          className="
+            absolute left-2 top-1/2 -translate-y-1/2 z-10 
+            text-white bg-black/20 hover:bg-black/50 
+            border-white/30 hover:border-white
+            lg:left-12 /* Move further out on desktop */
+          "
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </CarouselPrevious>
+        <CarouselNext 
+          className="
+            absolute right-2 top-1/2 -translate-y-1/2 z-10 
+            text-white bg-black/20 hover:bg-black/50 
+            border-white/30 hover:border-white
+            lg:right-12 /* Move further out on desktop */
+          "
+        >
+          <ChevronRight className="w-6 h-6" />
+        </CarouselNext>
+
       </Carousel>
     </div>
   );
