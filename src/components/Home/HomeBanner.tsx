@@ -54,7 +54,8 @@ const HomeBanner = () => {
   }, [api])
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-[70vh] md:h-screen">
+
       <Carousel opts={{ loop: true, align: 'start' }} className="w-full h-full" setApi={setApi}>
         <CarouselContent>
           {IMAGES.map((src, idx) => (
@@ -80,8 +81,8 @@ const HomeBanner = () => {
               onClick={() => api?.scrollTo(i)}
               className={
                 i === selectedIndex
-                  ? 'h-2 w-6 rounded-full bg-white/90'
-                  : 'h-2 w-2 rounded-full bg-white/50'
+                  ? 'h-2 w-6 rounded-full bg-white/90 transition-all'
+                  : 'h-2 w-2 rounded-full bg-white/50 transition-all'
               }
             />
           ))}
@@ -91,4 +92,4 @@ const HomeBanner = () => {
   )
 }
 
-export default HomeBanner
+export default HomeBanner;

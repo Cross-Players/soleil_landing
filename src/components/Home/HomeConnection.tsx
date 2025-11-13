@@ -3,24 +3,34 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl' 
 
 const HomeConnection = () => {
+  const t = useTranslations("gallery"); 
+
   return (
-    <div className="w-full h-full relative">
+     <div className="w-full h-screen relative">
       <Image
         src="/images/home/cover-connection.png"
         alt="Connection"
-        width={8000}
-        height={3959}
+        fill // 'fill'
         priority
         sizes="100vw"
-        className="object-cover"
+        className="object-cover" // 'object-cover' fit
       />
       <Link
         href="/connection"
-        className="absolute bottom-6 right-6 px-8 py-2 rounded border border-white text-white uppercase font-medium transition-all duration-300 bg-[#12243E] hover:bg-white hover:text-black hover:border-white z-10"
+        className="
+          absolute z-10 
+          bottom-4 left-4 px-6 py-2 
+          md:bottom-6 md:left-6 md:px-8 
+          rounded border border-white text-white 
+          text-sm md:text-base
+          uppercase font-medium transition-all duration-300 
+          bg-[#12243E]/80 hover:bg-white hover:text-black hover:border-white
+        "
       >
-        Xem chi tiết
+        {t("viewDetails")} 
       </Link>
     </div>
   )
