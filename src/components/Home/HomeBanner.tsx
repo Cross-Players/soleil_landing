@@ -54,25 +54,26 @@ const HomeBanner = () => {
   }, [api])
 
   return (
-    <div className="w-full h-[70vh] md:h-screen">
+    <div className="w-full h-screen mt-[-96px]">
 
       <Carousel opts={{ loop: true, align: 'start' }} className="w-full h-full" setApi={setApi}>
         <CarouselContent>
           {IMAGES.map((src, idx) => (
-            <CarouselItem key={src} className="w-full h-full relative">
+            <CarouselItem 
+              key={src} 
+              className="w-full h-full relative"
+            >
               <Image
                 src={src}
                 alt="Hero banner"
-                fill
+                fill 
                 priority={idx === 0}
                 sizes="100vw"
-                className="object-cover"
+                className="object-cover" 
               />
             </CarouselItem>
           ))}
         </CarouselContent>
-
-        {/* Dots */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
           {IMAGES.map((_, i) => (
             <button
