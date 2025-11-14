@@ -54,8 +54,10 @@ const HomeBanner = () => {
   }, [api])
 
   return (
-    <div className="w-full h-[70vh] md:h-screen">
-
+    <div className="w-full h-[70vh] md:h-screen relative">
+      {/* H1 Tag for SEO - Screen reader accessible */}
+      <h1 className="sr-only">The Soleil Đà Nẵng - Wyndham Soleil Đà Nẵng</h1>
+      
       <Carousel opts={{ loop: true, align: 'start' }} className="w-full h-full" setApi={setApi}>
         <CarouselContent>
           {IMAGES.map((src, idx) => (
