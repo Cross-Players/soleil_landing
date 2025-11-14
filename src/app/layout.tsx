@@ -5,7 +5,7 @@ import Header from '@/components/Layout/Header'
 import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader';
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages, getTranslations } from 'next-intl/server' // getLocale removed
+import { getMessages, getTranslations, getLocale } from 'next-intl/server'
 import Toaster from '@/components/Toaster'
 import Image from 'next/image' // <-- 1. IMPORT IMAGE
 import { ReactNode } from 'react' // <-- 2. IMPORT REACTNODE
@@ -16,9 +16,15 @@ const font = Montserrat({ subsets: ["latin"], weight: ["300","400","500","600","
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ locale: string }>
+  params?: Promise<{ locale?: string }>
 }): Promise<Metadata> {
-  const { locale } = await params;
+  // Get locale from params if available, otherwise use getLocale()
+  const paramsData = params ? await params : null;
+  const localeFromParams = paramsData?.locale;
+  const resolvedLocale = localeFromParams || await getLocale() || 'vi';
+  // Ensure locale is always 'vi' or 'en'
+  const locale = (resolvedLocale === 'en' || resolvedLocale === 'vi') ? resolvedLocale : 'vi';
+  
   const t = await getTranslations({ locale, namespace: 'meta' })
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleil.vn'
   const siteName = 'The Soleil Đà Nẵng'
@@ -48,12 +54,13 @@ export async function generateMetadata({
     publisher: 'PPC An Thịnh Đà Nẵng',
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: localeUrl,
+      // Don't set canonical here - let each page set its own canonical URL
+      // canonical: localeUrl,
       languages: {
         'vi': baseUrl,
         'en': `${baseUrl}/en`,
         'x-default': baseUrl,
-        [locale]: localeUrl // Self-referential alternate link
+        [locale]: localeUrl // Self-referential alternate link (locale is guaranteed to be 'vi' or 'en')
       }
     },
     openGraph: {
@@ -104,9 +111,14 @@ export default async function RootLayout({
   params
 }: Readonly<{
   children: ReactNode;
-  params: Promise<{ locale: string }>; // <-- Define type for params
+  params?: Promise<{ locale?: string }>; // <-- Make params optional
 }>) {
-  const { locale } = await params;
+  // Get locale from params if available, otherwise use getLocale()
+  const paramsData = params ? await params : null;
+  const localeFromParams = paramsData?.locale;
+  const resolvedLocale = localeFromParams || await getLocale() || 'vi';
+  // Ensure locale is always 'vi' or 'en'
+  const locale = (resolvedLocale === 'en' || resolvedLocale === 'vi') ? resolvedLocale : 'vi';
   
   // const locale = await getLocale() // <-- This line is no longer needed
   const messages = await getMessages()
