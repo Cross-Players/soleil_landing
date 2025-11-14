@@ -2,6 +2,40 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import AnimateInView from '@/components/shared/AnimateInView';
 import { Playfair_Display } from 'next/font/google';
+import type { Metadata } from 'next';
+import { getLocale } from 'next-intl/server';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: 'Connection' });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleildanang.com'
+  const localeUrl = locale === 'vi' ? `${baseUrl}/connection` : `${baseUrl}/${locale}/connection`
+  
+  return {
+    title: t('hero_title'),
+    description: `${t('main_heading')}. ${t('location_mykhe_desc')}`,
+    alternates: {
+      canonical: localeUrl,
+      languages: {
+        'vi': `${baseUrl}/connection`,
+        'en': `${baseUrl}/en/connection`,
+      },
+    },
+    openGraph: {
+      title: t('hero_title'),
+      description: `${t('main_heading')}. ${t('location_mykhe_desc')}`,
+      url: localeUrl,
+      images: [
+        {
+          url: `${baseUrl}/images/home/ketnoi.jpg`,
+          width: 1200,
+          height: 630,
+          alt: t('hero_title'),
+        },
+      ],
+    },
+  };
+}
 
 // Khởi tạo font cho banner
 const playfair = Playfair_Display({

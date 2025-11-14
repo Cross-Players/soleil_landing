@@ -1,0 +1,36 @@
+# robots.txt for The Soleil Đà Nẵng
+
+User-agent: *
+Allow: /
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow important pages
+Allow: /
+Allow: /introduction
+Allow: /apartment
+Allow: /facility
+Allow: /connection
+Allow: /partners
+Allow: /news
+Allow: /gallery
+Allow: /contact-us
+Allow: /en/
+Allow: /en/introduction
+Allow: /en/apartment
+Allow: /en/facility
+Allow: /en/connection
+Allow: /en/partners
+Allow: /en/news
+Allow: /en/gallery
+Allow: /en/contact-us
+
+# Sitemap location
+Sitemap: https://thesoleildanang.com/sitemap.xml
+
+# Crawl delay (optional, adjust as needed)
+Crawl-delay: 1
+
