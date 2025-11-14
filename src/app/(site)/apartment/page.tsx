@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
   SelectGroup,
-} from "@/components/ui/select"; 
+} from "@/components/ui/select";
 
 // Khởi tạo font
 const playfair = Playfair_Display({

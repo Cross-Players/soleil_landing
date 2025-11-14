@@ -1,6 +1,43 @@
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import AnimateInView from '@/components/shared/AnimateInView';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Introduction' });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleildanang.com'
+  const localeUrl = locale === 'vi' ? `${baseUrl}/introduction` : `${baseUrl}/${locale}/introduction`
+  
+  return {
+    title: t('hero_title'),
+    description: `${t('main_heading')}. ${t('section1_content').substring(0, 150)}...`,
+    alternates: {
+      canonical: localeUrl,
+      languages: {
+        'vi': `${baseUrl}/introduction`,
+        'en': `${baseUrl}/en/introduction`,
+      },
+    },
+    openGraph: {
+      title: t('hero_title'),
+      description: `${t('main_heading')}. ${t('section1_content').substring(0, 150)}...`,
+      url: localeUrl,
+      images: [
+        {
+          url: `${baseUrl}/images/home/banner-4.jpg`,
+          width: 1200,
+          height: 630,
+          alt: t('hero_title'),
+        },
+      ],
+    },
+  };
+}
 
 // Định nghĩa dữ liệu cấu trúc cho các phần nội dung
 const introductionSections = [
