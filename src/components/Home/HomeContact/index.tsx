@@ -135,9 +135,9 @@ const HomeContact = () => {
         <div className=" mx-auto">
           {/* Title */}
           <div className="flex flex-col items-center mb-12">
-            <h1 className="text-[28px] font-black leading-[50px] text-white text-center relative pb-4 after:content-[''] after:w-[100px] after:h-[2px] after:bg-white after:bottom-0 after:left-1/2 after:absolute after:-translate-x-1/2">
+            <h2 className="text-[28px] font-black leading-[50px] text-white text-center relative pb-4 after:content-[''] after:w-[100px] after:h-[2px] after:bg-white after:bottom-0 after:left-1/2 after:absolute after:-translate-x-1/2">
               {t("title")}
-            </h1>
+            </h2>
           </div>
 
           {/* Contact Form */}

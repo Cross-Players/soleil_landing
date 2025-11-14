@@ -29,7 +29,7 @@ Allow: /en/gallery
 Allow: /en/contact-us
 
 # Sitemap location
-Sitemap: https://thesoleildanang.com/sitemap.xml
+Sitemap: https://thesoleil.vn/sitemap.xml
 
 # Crawl delay (optional, adjust as needed)
 Crawl-delay: 1
