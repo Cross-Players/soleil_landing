@@ -38,9 +38,9 @@ const HomeGallery = () => {
       <div className="container mx-auto max-w-7xl px-4">
         {/* Tabs and Content */}
         <div className="bg-[#1a4d4d] rounded-lg p-8">
-          <h1 className="text-[28px] font-black leading-[50px] text-white text-center relative pb-4 after:content-[''] after:w-[100px] after:h-[2px] after:bg-white after:bottom-0 after:left-1/2 after:absolute after:-translate-x-1/2 mb-8">
+          <h2 className="text-[28px] font-black leading-[50px] text-white text-center relative pb-4 after:content-[''] after:w-[100px] after:h-[2px] after:bg-white after:bottom-0 after:left-1/2 after:absolute after:-translate-x-1/2 mb-8">
             {t("title")}
-          </h1>
+          </h2>
           <Tabs
             defaultValue="images"
             className="w-full"

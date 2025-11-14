@@ -128,7 +128,7 @@ const HomeUtilities = () => {
         </CarouselContent>
 
         {/* Responsive Main Title */}
-        <h1 
+        <h2 
           className="
             font-black text-white text-center 
             absolute left-1/2 -translate-x-1/2 
@@ -141,7 +141,7 @@ const HomeUtilities = () => {
           "
         >
           {t("title")}
-        </h1>
+        </h2>
 
         {/* Vertical Dot Navigation (Hidden on Mobile) */}
         <div 

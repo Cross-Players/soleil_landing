@@ -4,7 +4,7 @@ import { getTranslations, getLocale } from 'next-intl/server';
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: 'partners' });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleildanang.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleil.vn'
   const localeUrl = locale === 'vi' ? `${baseUrl}/partners` : `${baseUrl}/${locale}/partners`
   
   return {
@@ -15,6 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'vi': `${baseUrl}/partners`,
         'en': `${baseUrl}/en/partners`,
+        [locale]: localeUrl, // Self-referential alternate link
+        'x-default': `${baseUrl}/partners`,
       },
     },
     openGraph: {

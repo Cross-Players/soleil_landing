@@ -20,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta' })
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleildanang.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleil.vn'
   const siteName = 'The Soleil Đà Nẵng'
   const title = t('title')
   const description = t('description')
@@ -52,7 +52,8 @@ export async function generateMetadata({
       languages: {
         'vi': baseUrl,
         'en': `${baseUrl}/en`,
-        'x-default': baseUrl
+        'x-default': baseUrl,
+        [locale]: localeUrl // Self-referential alternate link
       }
     },
     openGraph: {
@@ -110,7 +111,7 @@ export default async function RootLayout({
   // const locale = await getLocale() // <-- This line is no longer needed
   const messages = await getMessages()
   const t = await getTranslations({ locale, namespace: 'meta' })
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleildanang.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleil.vn'
   const description = t('description')
 
   // --- 5. ADD CONTACT CONSTANTS ---

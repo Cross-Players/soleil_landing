@@ -10,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Introduction' });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleildanang.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleil.vn'
   const localeUrl = locale === 'vi' ? `${baseUrl}/introduction` : `${baseUrl}/${locale}/introduction`
   
   return {
@@ -21,6 +21,8 @@ export async function generateMetadata({
       languages: {
         'vi': `${baseUrl}/introduction`,
         'en': `${baseUrl}/en/introduction`,
+        [locale]: localeUrl, // Self-referential alternate link
+        'x-default': `${baseUrl}/introduction`,
       },
     },
     openGraph: {
