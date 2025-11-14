@@ -33,4 +33,4 @@ jobs:
         run: yarn vercel build --yes --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
-        run: yarn vercel deploy --prebuilt --preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: yarn vercel deploy --prebuilt --yes --token=${{ secrets.VERCEL_TOKEN }}
