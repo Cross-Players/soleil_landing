@@ -72,6 +72,11 @@ export async function generateMetadata({
         },
       ],
     },
+    other: {
+      'facebook:app_id': process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || '',
+      'twitter:site': '@soleildanang',
+      'twitter:creator': '@soleildanang',
+    },
     twitter: {
       card: 'summary_large_image',
       title,
@@ -120,8 +125,8 @@ export default async function RootLayout({
   const PHONE_LINK = "tel:0345747138";
   // --- END OF CONTACT CONSTANTS ---
 
-  // Structured Data (JSON-LD) for SEO
-  const structuredData = {
+  // Structured Data (JSON-LD) for SEO - Multiple schemas
+  const residentialComplexSchema = {
     '@context': 'https://schema.org',
     '@type': 'ResidentialComplex',
     name: 'The Soleil Đà Nẵng',
@@ -132,6 +137,8 @@ export default async function RootLayout({
       '@type': 'PostalAddress',
       streetAddress: 'Số 02, Phạm Văn Đồng, Phường An Hải',
       addressLocality: 'Đà Nẵng',
+      addressRegion: 'Đà Nẵng',
+      postalCode: '550000',
       addressCountry: 'VN',
     },
     geo: {
@@ -184,13 +191,69 @@ export default async function RootLayout({
     email: 'Thesoleildanangofficial@gmail.com',
   }
 
+  // Local Business Schema for better local SEO
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${baseUrl}#business`,
+    name: 'The Soleil Đà Nẵng',
+    alternateName: 'Wyndham Soleil Đà Nẵng',
+    description: description,
+    url: baseUrl,
+    telephone: '+84345747138',
+    email: 'Thesoleildanangofficial@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Số 02, Phạm Văn Đồng, Phường An Hải',
+      addressLocality: 'Đà Nẵng',
+      addressRegion: 'Đà Nẵng',
+      postalCode: '550000',
+      addressCountry: 'VN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '16.0583',
+      longitude: '108.2278',
+    },
+    priceRange: '$$$',
+    image: `${baseUrl}/images/home/cover-image.jpg`,
+    sameAs: [
+      'https://www.facebook.com/Thesoleildanang.wyndhamofficial',
+    ],
+  }
+
   return (
     <html lang={locale}>
       <head>
+        {/* Residential Complex Schema */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(residentialComplexSchema) }}
         />
+        {/* Local Business Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        {/* Google Analytics - Add your GA4 ID in environment variables */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+                `,
+              }}
+            />
+          </>
+        )}
       </head>
       <body className={`${font.className} bg-white dark:bg-black antialiased relative`}>
         <NextTopLoader color="#07be8a" />

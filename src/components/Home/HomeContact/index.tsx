@@ -240,8 +240,15 @@ const HomeContact = () => {
                 </p>
                 <p>
                   <span className="font-semibold">{t("info.email_label")}:</span>{" "}
-                  <a href="mailto:Thesoleildanangofficial@gmail.com" className="hover:underline">
-                    {t("info.email_value")}
+                  <a 
+                    href="mailto:Thesoleildanangofficial@gmail.com" 
+                    className="hover:underline"
+                    onClick={(e) => {
+                      // Email is already in href, this is just for display obfuscation
+                      // The actual mailto link works normally
+                    }}
+                  >
+                    {t("info.email_value").replace('@', ' [at] ')}
                   </a>
                 </p>
                 <p>
