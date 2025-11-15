@@ -109,7 +109,9 @@ const HomeContact = () => {
 
   return (
     <div
-      className="w-full min-h-screen py-16 md:py-24 relative"
+      // === 1. SỬA LỖI Ở ĐÂY ===
+      // Giảm padding dọc trên mobile từ 'py-16' xuống 'py-12' (48px)
+      className="w-full py-12 md:py-24 relative"
       style={{
         backgroundImage: "url(/images/home/cover-footer.png)",
         backgroundSize: "cover",
@@ -128,8 +130,11 @@ const HomeContact = () => {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="mb-12 max-w-4xl mx-auto">
+          {/* === 2. SỬA LỖI Ở ĐÂY === */}
+          {/* Giảm margin dưới của form từ 'mb-12' (48px) xuống 'mb-8' (32px) */}
+          <form onSubmit={handleSubmit} className="mb-8 max-w-4xl mx-auto">
             <div className="space-y-6">
+              {/* ... (Các trường input giữ nguyên) ... */}
               <div>
                 <input
                   type="text"
@@ -200,9 +205,12 @@ const HomeContact = () => {
               </div>
             </div>
           </form>
+
+          {/* Bottom Section */}
+          {/* Bố cục responsive (mobile: icon lên trên, desktop: info bên trái) */}
           <div className="flex flex-col-reverse md:flex-row justify-between gap-8 md:gap-12 max-w-7xl mx-auto items-start text-left">
             
-            {/* INFOR */}
+            {/* 1. KHỐI THÔNG TIN (Sẽ ở dưới trên mobile, bên trái trên desktop) */}
             <div className="space-y-4">
               <h2 className="text-white font-bold text-lg uppercase">
                 {t("info.projectName")}
@@ -239,7 +247,7 @@ const HomeContact = () => {
               </Link>
             </div>
 
-            {/* 2. KHỐI ICON */}
+            {/* 2. KHỐI ICON (Sẽ ở trên trên mobile, bên phải trên desktop) */}
             <div className="space-y-6 flex flex-col items-start">
               {/* Social Media Icons */}
               <div className="flex gap-4">
