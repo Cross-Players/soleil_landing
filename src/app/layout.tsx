@@ -5,7 +5,7 @@ import Header from '@/components/Layout/Header'
 import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader';
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages, getTranslations } from 'next-intl/server' // getLocale removed
+import { getMessages, getTranslations, getLocale } from 'next-intl/server'
 import Toaster from '@/components/Toaster'
 import Image from 'next/image' // <-- 1. IMPORT IMAGE
 import { ReactNode } from 'react' // <-- 2. IMPORT REACTNODE
@@ -14,28 +14,117 @@ const font = Montserrat({ subsets: ["latin"], weight: ["300","400","500","600","
 
 // 3. FIX METADATA FUNCTION (Must accept params)
 export async function generateMetadata({
-  params: { locale }
+  params
 }: {
-  params: { locale: string }
+  params?: Promise<{ locale?: string }>
 }): Promise<Metadata> {
+  // Get locale from params if available, otherwise use getLocale()
+  const paramsData = params ? await params : null;
+  const localeFromParams = paramsData?.locale;
+  const resolvedLocale = localeFromParams || await getLocale() || 'vi';
+  // Ensure locale is always 'vi' or 'en'
+  const locale = (resolvedLocale === 'en' || resolvedLocale === 'vi') ? resolvedLocale : 'vi';
+  
   const t = await getTranslations({ locale, namespace: 'meta' })
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleil.vn'
+  const siteName = 'The Soleil Đà Nẵng'
+  const title = t('title')
+  const description = t('description')
+  const localeUrl = locale === 'vi' ? baseUrl : `${baseUrl}/${locale}`
+  
   return {
-    title: t('title'),
-    description: t('description')
+    title: {
+      default: title,
+      template: `%s | ${siteName}`
+    },
+    description,
+    keywords: [
+      'Wyndham Soleil Đà Nẵng',
+      'căn hộ Đà Nẵng',
+      'chung cư cao cấp Đà Nẵng',
+      'bất động sản Đà Nẵng',
+      'căn hộ ven biển',
+      'Wyndham Hotel',
+      'Da Nang apartments',
+      'luxury apartments Da Nang',
+      'real estate Da Nang'
+    ],
+    authors: [{ name: 'PPC An Thịnh Đà Nẵng' }],
+    creator: 'PPC An Thịnh Đà Nẵng',
+    publisher: 'PPC An Thịnh Đà Nẵng',
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      // Don't set canonical here - let each page set its own canonical URL
+      // canonical: localeUrl,
+      languages: {
+        'vi': baseUrl,
+        'en': `${baseUrl}/en`,
+        'x-default': baseUrl,
+        [locale]: localeUrl // Self-referential alternate link (locale is guaranteed to be 'vi' or 'en')
+      }
+    },
+    openGraph: {
+      type: 'website',
+      locale: locale === 'vi' ? 'vi_VN' : 'en_US',
+      url: localeUrl,
+      siteName,
+      title,
+      description,
+      images: [
+        {
+          url: `${baseUrl}/images/home/cover-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${baseUrl}/images/home/cover-image.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    verification: {
+      // Add your verification codes here when available
+      // google: 'your-google-verification-code',
+      // yandex: 'your-yandex-verification-code',
+      // yahoo: 'your-yahoo-verification-code',
+    },
   }
 }
 
 // 4. FIX ROOTLAYOUT FUNCTION (Must accept params)
 export default async function RootLayout({
   children,
-  params: { locale } // <-- Get locale from params
+  params
 }: Readonly<{
   children: ReactNode;
-  params: { locale: string }; // <-- Define type for params
+  params?: Promise<{ locale?: string }>; // <-- Make params optional
 }>) {
+  // Get locale from params if available, otherwise use getLocale()
+  const paramsData = params ? await params : null;
+  const localeFromParams = paramsData?.locale;
+  const resolvedLocale = localeFromParams || await getLocale() || 'vi';
+  // Ensure locale is always 'vi' or 'en'
+  const locale = (resolvedLocale === 'en' || resolvedLocale === 'vi') ? resolvedLocale : 'vi';
   
   // const locale = await getLocale() // <-- This line is no longer needed
   const messages = await getMessages()
+  const t = await getTranslations({ locale, namespace: 'meta' })
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleil.vn'
+  const description = t('description')
 
   // --- 5. ADD CONTACT CONSTANTS ---
   const ZALO_LINK = "https://zalo.me/0345747138";
@@ -43,8 +132,78 @@ export default async function RootLayout({
   const PHONE_LINK = "tel:0345747138";
   // --- END OF CONTACT CONSTANTS ---
 
+  // Structured Data (JSON-LD) for SEO
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'ResidentialComplex',
+    name: 'The Soleil Đà Nẵng',
+    alternateName: 'Wyndham Soleil Đà Nẵng',
+    description: description,
+    url: baseUrl,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Số 02, Phạm Văn Đồng, Phường An Hải',
+      addressLocality: 'Đà Nẵng',
+      addressCountry: 'VN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '16.0583',
+      longitude: '108.2278',
+    },
+    developer: {
+      '@type': 'Organization',
+      name: 'Công Ty Cổ Phần PPC An Thịnh Đà Nẵng',
+      url: baseUrl,
+    },
+    operator: {
+      '@type': 'Organization',
+      name: 'Wyndham Hotel Group',
+    },
+    numberOfUnits: {
+      '@type': 'QuantitativeValue',
+      value: 'Multiple towers with various apartment types',
+    },
+    amenityFeature: [
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Infinity Pool',
+        value: true,
+      },
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Gym',
+        value: true,
+      },
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Spa',
+        value: true,
+      },
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Restaurant',
+        value: true,
+      },
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Shopping Center',
+        value: true,
+      },
+    ],
+    image: `${baseUrl}/images/home/cover-image.jpg`,
+    telephone: '+84345747138',
+    email: 'Thesoleildanangofficial@gmail.com',
+  }
+
   return (
-    <html lang={locale}> {/* Use locale from params */}
+    <html lang={locale}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body className={`${font.className} bg-white dark:bg-black antialiased relative`}>
         <NextTopLoader color="#07be8a" />
           <NextIntlClientProvider locale={locale} messages={messages}>
