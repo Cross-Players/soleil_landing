@@ -3,18 +3,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl"; // We need this to read the new text
+import { useTranslations } from "next-intl"; 
 
 const ProjectOverview = () => {
-  // --- 1. Translation Hooks ---
-  const t = useTranslations("Overview"); // For the new project info
-  const tGallery = useTranslations("gallery"); // For the "View Details" button
-
-  // --- 2. Image Data ---
+  const t = useTranslations("Overview"); 
+  const tGallery = useTranslations("gallery"); 
   const newStaticImage =
-    "/images/home/updatevideo.jpg"; // The image (now on the left)
+    "/images/home/updatevideo.jpg"; 
   
-  // --- 3. Gold/Silver Gradient Class (For values) ---
   const valueGradientClass = "font-bold bg-gradient-to-r from-yellow-400 via-gray-200 to-yellow-500 bg-clip-text text-transparent";
 
   return (
@@ -29,17 +25,17 @@ const ProjectOverview = () => {
         transition: "opacity .5s ease",
       }}
     >
-      {/* === CHANGED ===
-        - Added 'pt-32' (128px) to push content down ("lui xuống") below the fixed header.
-        - Added 'pb-16' for bottom spacing.
-      */}
+      {/* Container với padding đã sửa (pt-32) từ lần trước */}
       <div className="container mx-auto max-w-7xl h-full px-4 lg:px-8 pt-32 pb-16 flex flex-col justify-center items-center gap-12">
-        
-        {/* === 1. MAIN CONTENT BLOCK (Image Left, Text Right) === */}
+
         <div className="w-full flex flex-col lg:flex-row justify-center items-start gap-12 lg:gap-16">
           
-          {/* === 1a. LEFT SIDE: Static Image (40%) === */}
-          <div className="lg:w-2/5 w-full lg:flex relative flex-col justify-center items-center">
+          {/* === 1. KHỐI ẢNH (BÊN TRÁI) === */}
+          {/* SỬA LỖI Ở ĐÂY:
+            - Thêm 'hidden' (ẩn mặc định - trên mobile)
+            - Giữ 'lg:flex' (hiện lại trên desktop)
+          */}
+          <div className="hidden lg:w-2/5 w-full lg:flex relative flex-col justify-center items-center">
             <div className="relative w-full rounded-lg overflow-hidden shadow-2xl">
               <Image
                 src={newStaticImage}
@@ -51,16 +47,20 @@ const ProjectOverview = () => {
               />
             </div>
           </div>
-
-          {/* === 1b. RIGHT SIDE: Project Info Text (60%) (STYLES UPDATED) === */}
+          
+          {/* === 2. KHỐI THÔNG TIN (BÊN PHẢI) === */}
+          {/* KHÔNG CẦN SỬA GÌ Ở ĐÂY:
+            - Class 'w-full' sẽ tự động chiếm 100% trên mobile (vì ảnh đã bị ẩn)
+            - Class 'lg:w-3/5' sẽ chiếm 60% trên desktop
+          */}
           <div className="lg:w-3/5 w-full text-white">
             
-            {/* CHANGED: Title smaller (text-3xl) */}
-            <h2 className={`text-4xl lg:text-3xl font-bold uppercase mb-6 text-center lg:text-left ${valueGradientClass}`}>
+            {/* Title (Đã thu nhỏ từ lần trước) */}
+            <h2 className={`text-3xl lg:text-4xl font-bold uppercase mb-6 text-center lg:text-left ${valueGradientClass}`}>
               {t('title')}
             </h2>
             
-            {/* CHANGED: Info text smaller (text-sm md:text-base) */}
+            {/* Info text (Đã thu nhỏ từ lần trước) */}
             <div className="space-y-3 text-sm md:text-base">
               <p><strong className="font-semibold text-white mr-2">{t('tradeName_label')}</strong> <span className="text-white">{t('tradeName_value')}</span></p>
               <p><strong className="font-semibold text-white mr-2">{t('investor_label')}</strong> <span className="text-white">{t('investor_value')}</span></p>
@@ -72,7 +72,7 @@ const ProjectOverview = () => {
             {/* Gold horizontal line */}
             <hr className="my-6 border-[#E3C284]/50" />
 
-            {/* Tower Section (No borders, flex layout) */}
+            {/* Tower Section (Đã thu nhỏ) */}
             <div className="flex w-full justify-between text-center px-2">
               <div>
                 <p className="text-white font-semibold text-xs md:text-sm">{t('tower_a1_label')}</p>
@@ -95,9 +95,8 @@ const ProjectOverview = () => {
             {/* Gold horizontal line */}
             <hr className="my-6 border-[#E3C284]/50" />
 
-            {/* Apartment Types (Labels = white, Sizes = gradient) */}
+            {/* Apartment Types (Đã thu nhỏ) */}
             <h3 className="text-lg md:text-xl font-bold uppercase mt-6 text-white">{t('apartmentTypes_title')}</h3>
-            {/* CHANGED: Apartment text smaller (text-sm md:text-base) */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mt-4 text-sm md:text-base">
               <p>• <span className="text-white">{t('apt_studio')}:</span> <span className={valueGradientClass}>{t('apt_studio_size')}</span></p>
               <p>• <span className="text-white">{t('apt_1br')}:</span> <span className={valueGradientClass}>{t('apt_1br_size')}</span></p>
@@ -111,10 +110,10 @@ const ProjectOverview = () => {
 
         </div>
 
-        {/* === 2. BUTTON BLOCK (Centered) === */}
+        {/* Nút "XEM CHI TIẾT" (Vẫn ở giữa) */}
         <div className="w-full flex justify-center">
           <Link
-            href="/introduction"
+            href="/introduction" // Sửa link này nếu bạn muốn
             className="w-fit px-8 py-2 rounded border border-white text-white uppercase font-medium transition-all duration-300 hover:bg-white hover:text-black hover:border-white flex-shrink-0"
           >
             {tGallery("viewDetails")} {/* Uses 'gallery' namespace */}

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { validateEmail } from "@/components/utils/validateEmail";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react"; // Đảm bảo đã import
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
@@ -107,22 +107,9 @@ const HomeContact = () => {
     }
   };
 
-  const switchTo = (next: "en" | "vi") => {
-    try {
-      document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=31536000`;
-    } catch {}
-    const cleanPath =
-      pathname.startsWith("/en") || pathname.startsWith("/vi")
-        ? pathname.replace(/^\/(en|vi)/, "") || "/"
-        : pathname || "/";
-    const target =
-      next === "en" ? `/en${cleanPath === "/" ? "" : cleanPath}` : cleanPath;
-    window.location.assign(target);
-  };
-
   return (
     <div
-      className="w-full min-h-screen py-24 relative"
+      className="w-full min-h-screen py-16 md:py-24 relative"
       style={{
         backgroundImage: "url(/images/home/cover-footer.png)",
         backgroundSize: "cover",
@@ -198,7 +185,6 @@ const HomeContact = () => {
                   <p className="text-red-300 text-sm mt-1">{errors.message}</p>
                 )}
               </div>
-
               <div className="flex justify-end">
                 <button
                   type="submit"
@@ -214,17 +200,13 @@ const HomeContact = () => {
               </div>
             </div>
           </form>
-
-          {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row justify-between gap-8 max-w-7xl mx-auto">
+          <div className="flex flex-col-reverse md:flex-row justify-between gap-8 md:gap-12 max-w-7xl mx-auto items-start text-left">
             
-            {/* === PHẦN ĐÃ SỬA === */}
-            {/* Contact Information */}
+            {/* INFOR */}
             <div className="space-y-4">
               <h2 className="text-white font-bold text-lg uppercase">
                 {t("info.projectName")}
               </h2>
-              {/* Hiển thị thông tin mới từ vi.json */}
               <div className="space-y-2 text-white">
                 <p>
                   <span className="font-semibold">{t("info.hotline1_label")}:</span>{" "}
@@ -250,17 +232,16 @@ const HomeContact = () => {
                 </p>
               </div>
               <Link
-                href="/terms" // Bạn hãy đảm bảo trang /terms này tồn tại nhé
+                href="/terms" 
                 className="text-white hover:underline block mt-4"
               >
                 {t("info.termsOfUse")}
               </Link>
             </div>
-            {/* === KẾT THÚC PHẦN SỬA === */}
 
-            {/* Social Media & Brochure */}
-            <div className="space-y-6">
-              {/* Social Media Icons (Link FB đã được cập nhật tự động từ vi.json) */}
+            {/* 2. KHỐI ICON */}
+            <div className="space-y-6 flex flex-col items-start">
+              {/* Social Media Icons */}
               <div className="flex gap-4">
                 <a
                   href={t("social.facebook")}
@@ -287,36 +268,8 @@ const HomeContact = () => {
                   <Youtube size={20} />
                 </a>
               </div>
-
-              {/* Brochure Download */}
-              <div>
-                <h3 className="text-white font-bold text-lg uppercase mb-4">
-                  {t("brochure.title")}
-                </h3>
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => switchTo("vi")}
-                    className={`px-6 py-2 rounded-full border-2 border-white transition-colors ${
-                      locale === "vi"
-                        ? "bg-white text-[#1a4d4d]"
-                        : "text-white hover:bg-white hover:text-[#1a4d4d]"
-                    }`}
-                  >
-                    {t("brochure.vietnamese")}
-                  </button>
-                  <button
-                    onClick={() => switchTo("en")}
-                    className={`px-6 py-2 rounded-full border-2 border-white transition-colors ${
-                      locale === "en"
-                        ? "bg-white text-[#1a4d4d]"
-                        : "text-white hover:bg-white hover:text-[#1a4d4d]"
-                    }`}
-                  >
-                    {t("brochure.english")}
-                  </button>
-                </div>
-              </div>
             </div>
+
           </div>
         </div>
       </div>
