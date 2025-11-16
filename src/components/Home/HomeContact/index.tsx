@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { validateEmail } from "@/components/utils/validateEmail";
-import { Facebook, Instagram, Youtube } from "lucide-react"; // Đảm bảo đã import
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
@@ -109,9 +109,7 @@ const HomeContact = () => {
 
   return (
     <div
-      // === 1. SỬA LỖI Ở ĐÂY ===
-      // Giảm padding dọc trên mobile từ 'py-16' xuống 'py-12' (48px)
-      className="w-full py-12 md:py-24 relative"
+      className="w-full py-10 md:py-24 relative"
       style={{
         backgroundImage: "url(/images/home/cover-footer.png)",
         backgroundSize: "cover",
@@ -122,19 +120,14 @@ const HomeContact = () => {
       <div className="absolute inset-0 bg-[#1a4d4d]/80"></div>
       <div className="container mx-auto max-w-7xl px-4 relative z-10">
         <div className=" mx-auto">
-          {/* Title */}
-          <div className="flex flex-col items-center mb-12">
-            <h2 className="text-[28px] font-black leading-[50px] text-white text-center relative pb-4 after:content-[''] after:w-[100px] after:h-[2px] after:bg-white after:bottom-0 after:left-1/2 after:absolute after:-translate-x-1/2">
+          <div className="flex flex-col items-center mb-8">
+            <h2 className="text-2xl md:text-[28px] font-black leading-[50px] text-white text-center relative pb-4 after:content-[''] after:w-[100px] after:h-[2px] after:bg-white after:bottom-0 after:left-1/2 after:absolute after:-translate-x-1/2">
               {t("title")}
             </h2>
           </div>
 
-          {/* Contact Form */}
-          {/* === 2. SỬA LỖI Ở ĐÂY === */}
-          {/* Giảm margin dưới của form từ 'mb-12' (48px) xuống 'mb-8' (32px) */}
-          <form onSubmit={handleSubmit} className="mb-8 max-w-4xl mx-auto">
-            <div className="space-y-6">
-              {/* ... (Các trường input giữ nguyên) ... */}
+          <form onSubmit={handleSubmit} className="mb-6 max-w-4xl mx-auto">
+            <div className="space-y-4">
               <div>
                 <input
                   type="text"
@@ -190,11 +183,18 @@ const HomeContact = () => {
                   <p className="text-red-300 text-sm mt-1">{errors.message}</p>
                 )}
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end pt-2">
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="border-2 border-white text-white px-8 py-2 rounded-md hover:bg-white hover:text-[#1a4d4d] transition-colors duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}      
+                  className="
+                    border-2 border-white text-white 
+                    text-sm px-6 py-2 
+                    md:text-base md:px-8
+                    rounded-md hover:bg-white hover:text-[#1a4d4d] 
+                    transition-colors duration-300 uppercase 
+                    disabled:opacity-50 disabled:cursor-not-allowed
+                  "
                 >
                   {isSubmitting
                     ? locale === "vi"
@@ -205,12 +205,9 @@ const HomeContact = () => {
               </div>
             </div>
           </form>
-
-          {/* Bottom Section */}
-          {/* Bố cục responsive (mobile: icon lên trên, desktop: info bên trái) */}
           <div className="flex flex-col-reverse md:flex-row justify-between gap-8 md:gap-12 max-w-7xl mx-auto items-start text-left">
             
-            {/* 1. KHỐI THÔNG TIN (Sẽ ở dưới trên mobile, bên trái trên desktop) */}
+            {/* 1. KHỐI THÔNG TIN */}
             <div className="space-y-4">
               <h2 className="text-white font-bold text-lg uppercase">
                 {t("info.projectName")}
@@ -247,7 +244,7 @@ const HomeContact = () => {
               </Link>
             </div>
 
-            {/* 2. KHỐI ICON (Sẽ ở trên trên mobile, bên phải trên desktop) */}
+            {/* 2. KHỐI ICON */}
             <div className="space-y-6 flex flex-col items-start">
               {/* Social Media Icons */}
               <div className="flex gap-4">

@@ -212,59 +212,73 @@ export default async function RootLayout({
               enableSystem={true}
               defaultTheme='light'>
               <Header />
-              {children}
+              {/* === BẠN ĐANG THIẾU <main className="pt-24 pb-40"> === */}
+              {children} 
+              {/* === PHẢI BỌC {children} BẰNG <main> ĐỂ SỬA LỖI LAYOUT === */}
               <Toaster />
             </ThemeProvider>
           </NextIntlClientProvider>
 
-          <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-5">
+          {/* === BẮT ĐẦU SỬA NÚT NỔI === */}
+          {/*
+            SỬA LỖI Ở ĐÂY:
+            - Dịch lên trên: 'bottom-6' (24px) -> 'bottom-8' (32px) trên mobile
+            - Dịch lên trên: 'lg:bottom-6' (24px) -> 'lg:bottom-12' (48px) trên desktop
+            - Sát nhau hơn: 'gap-5' (20px) -> 'gap-3' (12px) trên mobile
+          */}
+          <div className="fixed bottom-8 right-4 lg:bottom-12 lg:right-6 z-50 flex flex-col items-end gap-3 lg:gap-5">
             
-            {/* 1. Zalo Button  */}
+            {/* 1. Nút Zalo (Bé hơn trên mobile) */}
             <a
               href={ZALO_LINK}
               target="_blank"
               rel="noopener noreferrer"
               title="Contact Zalo"
-              className="relative"
+              // Mobile: w-12 h-12 (48px)
+              // Desktop: lg:w-16 lg:h-16 (64px)
+              className="relative w-12 h-12 lg:w-16 lg:h-16"
             >
               <Image
                 src="/images/zalo-1.png" 
-                width={64}
-                height={64}
                 alt="Zalo"
-                className="w-16 h-16 relative z-10" // 64px size
+                fill // Tự lấp đầy thẻ <a> cha
+                sizes="(max-width: 1023px) 48px, 64px"
+                className="relative z-10"
               />
             </a>
 
-            {/* 2. Phone Button  */}
+            {/* 2. Nút Điện thoại (Bé hơn và Ẩn chữ trên mobile) */}
             <a
               href={PHONE_LINK}
               title="Call Hotline"
               className="flex items-center group"
             >
-              {/* Phone Icon (Left side) - 3 Layers */}
-              <div className="relative flex-shrink-0">
+              {/* Icon Phone (bên trái) - Gồm 2 lớp */}
+              <div className="relative flex-shrink-0 
+                w-12 h-12 lg:w-16 lg:h-16" // <-- Sửa kích thước
+              >
                 
-                {/* LAYER 2 (z-10): Red Circle background */}
+                {/* LỚP GIỮA (z-10): Hình tròn đỏ */}
                 <div className="absolute inset-0 bg-red-500 rounded-full z-10"></div>
 
-                {/* LAYER 3 (z-20): Phone Icon */}
+                {/* LỚP TRÊN (z-20): Icon điện thoại */}
                 <Image
                   src="/images/icon-1.png" 
-                  width={64}
-                  height={64}
                   alt="Phone"
-                  className="w-16 h-16 relative z-20" // 64px size
+                  fill // Tự lấp đầy
+                  sizes="(max-width: 1023px) 48px, 64px"
+                  className="relative z-20"
                 />
               </div>
 
-              {/* Text (red background, white text)  */}
+              {/* Dòng chữ (bên phải) */}
               <div 
                 className="
+                  hidden lg:flex /* <-- ẨN trên mobile, HIỆN trên desktop */
                   bg-red-500 text-white text-lg font-bold px-5 py-3 
                   rounded-r-full shadow-lg
-                  ml-[-16px] /* Connects to the icon (from the left) */
-                  relative z-0 /* LAYER 1 (z-0) */
+                  ml-[-16px] /* Nối liền vào icon (chỉ áp dụng trên desktop) */
+                  relative z-0
                 "
               >
                 {PHONE_NUMBER}
@@ -272,6 +286,7 @@ export default async function RootLayout({
             </a>
 
           </div>
+          {/* === KẾT THÚC SỬA NÚT NỔI === */}
       </body>
     </html>
   )
