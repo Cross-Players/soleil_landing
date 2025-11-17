@@ -36,43 +36,54 @@ const Partners = () => {
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
   return (
-    <div className="w-full h-full flex">
+    <div className="w-full h-full flex flex-col lg:flex-row">
       {PARTNERS.map((partner, index) => {
         const isFocused = focusedIndex === index;
         const hasFocused = focusedIndex !== null;
         
+        // Mobile: vertical layout - each item always takes 1/3 height (equal height)
+        // Desktop: horizontal layout - width distribution
         // When no partner is focused: all equal (1/3 each)
         // When a partner is focused: focused = 2 units, others = 1 unit each
         // Total: 2 + 1 + 1 = 4 units
         // Focused: 50% (2/4), Others: 25% (1/4) each
         const widthClass = hasFocused
           ? isFocused
-            ? "w-1/2"
-            : "w-1/4"
-          : "w-1/3";
+            ? "w-full md:w-1/2"
+            : "w-full md:w-1/4"
+          : "w-full md:w-1/3";
+        
+        // Mobile: always h-1/3 (equal height for all items)
+        // Desktop: full height (width changes on focus)
+        const heightClass = "h-1/3 md:h-full";
 
         return (
           <div
             key={index}
-            className={`${widthClass} relative h-full overflow-hidden transition-all duration-700 ease-in-out`}
+            className={`${widthClass} ${heightClass} relative overflow-hidden transition-all duration-700 ease-in-out`}
             onMouseEnter={() => setFocusedIndex(index)}
             onMouseLeave={() => setFocusedIndex(null)}
           >
-            {/* White border on the right (except for last partner) */}
+            {/* White border on mobile: bottom border, on desktop: right border */}
             {index < PARTNERS.length - 1 && (
-              <div className="absolute right-0 top-0 bottom-0 w-px bg-white z-10" />
+              <>
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-white z-10 md:hidden" />
+                <div className="absolute right-0 top-0 bottom-0 w-px bg-white z-10 hidden md:block" />
+              </>
             )}
             
             {/* Background Image Container */}
             <div
-              className="absolute inset-0"
+              className={`absolute inset-0 transition-transform duration-700 ease-in-out ${
+                isFocused 
+                  ? "scale-y-[1.1] md:scale-105" 
+                  : "scale-y-100 md:scale-100"
+              }`}
               style={{
                 backgroundImage: `url(${partner.coverImage})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-                transform: isFocused ? "scale(1.05)" : "scale(1)",
-                transition: "transform 700ms ease-in-out",
               }}
             />
 
@@ -85,7 +96,7 @@ const Partners = () => {
                   alt={t(partner.title)}
                   width={partner.logoWidth}
                   height={partner.logoHeight}
-                  className="object-contain max-w-[180px] sm:max-w-[220px] lg:max-w-[280px] xl:max-w-[320px] h-auto transition-all duration-1000"
+                  className="object-contain max-w-[180px] sm:max-w-[220px] lg:max-w-[280px] xl:max-w-[320px] h-[167px] lg:h-auto transition-all duration-1000"
                   style={{
                     transform: isFocused ? "scale(1.5)" : "scale(1)",
                   }}

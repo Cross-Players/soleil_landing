@@ -59,9 +59,19 @@ const HomeConnection = () => {
   }, [api])
 
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full lg:h-screen h-[600px] relative">
+      {/* Background for mobile */}
+      <div
+        className="lg:hidden absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url(/images/home/cover-footer.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
       
-      <Carousel opts={{ loop: true, align: 'start' }} className="w-full h-full" setApi={setApi}>
+      <Carousel opts={{ loop: true, align: 'start' }} className="w-full h-full relative z-10" setApi={setApi}>
         <CarouselContent>
           {IMAGES.map((src, idx) => (
             <CarouselItem key={src} className="w-full h-full relative">
@@ -71,14 +81,14 @@ const HomeConnection = () => {
                 fill 
                 priority={idx === 0}
                 sizes="100vw"
-                className="object-cover" 
+                className="lg:object-cover object-contain" 
                 placeholder="empty" 
               />
             </CarouselItem>
           ))}
         </CarouselContent>
 
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+        <div className="absolute lg:bottom-6 bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
           {IMAGES.map((_, i) => (
             <button
               key={i}

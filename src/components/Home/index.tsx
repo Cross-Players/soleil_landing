@@ -79,38 +79,49 @@ const Home = () => {
   }, [api]);
 
   return (
-    <div ref={carouselContainerRef} className="w-screen h-screen overflow-hidden">
-      <Carousel
-        opts={{ loop: false, align: "start", dragFree: false }}
-        orientation="vertical"
-        className="w-full h-full"
-        setApi={setApi}
-      >
-        <CarouselContent className="h-full mt-0!">
-          {slides.map((SlideComponent, idx) => (
-            <CarouselItem key={idx} className="w-full h-screen pt-0!">
-              <SlideComponent />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-
-        {/* Dots - Right side, vertically centered */}
-        <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 z-50 pointer-events-auto">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              aria-label={`Go to slide ${i + 1}`}
-              onClick={() => api?.scrollTo(i)}
-              className={
-                i === selectedIndex
-                  ? "h-6 w-2 rounded-full bg-white/90 transition-all shadow-lg"
-                  : "h-2 w-2 rounded-full bg-white/50 transition-all hover:bg-white/70 shadow-md"
-              }
-            />
-          ))}
-        </div>
-      </Carousel>
-    </div>
+    <>
+      <div ref={carouselContainerRef} className="lg:block hidden w-screen h-screen overflow-hidden">
+        <Carousel
+          opts={{ loop: false, align: "start", dragFree: false }}
+          orientation="vertical"
+          className="w-full h-full"
+          setApi={setApi}
+        >
+          <CarouselContent className="h-full mt-0!">
+            {slides.map((SlideComponent, idx) => (
+              <CarouselItem key={idx} className="w-full h-screen pt-0!">
+                <SlideComponent />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+  
+          {/* Dots - Right side, vertically centered */}
+          <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 z-50 pointer-events-auto">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => api?.scrollTo(i)}
+                className={
+                  i === selectedIndex
+                    ? "h-6 w-2 rounded-full bg-white/90 transition-all shadow-lg"
+                    : "h-2 w-2 rounded-full bg-white/50 transition-all hover:bg-white/70 shadow-md"
+                }
+              />
+            ))}
+          </div>
+        </Carousel>
+      </div>
+      <div className="lg:hidden block overflow-hidden">
+        <HomeBanner />
+        <ProjectOverview />
+        <HomeConnection />
+        <HomePartners />
+        <HomeUtilities />
+        <HomeGallery />
+        <HomeContact />
+      </div>
+    </>
   );
 };
 

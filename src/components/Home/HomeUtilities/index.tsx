@@ -10,10 +10,7 @@ import {
   CarouselApi,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
 } from "@/components/ui/carousel";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const UTILITIES = [
   {
@@ -78,7 +75,7 @@ const HomeUtilities = () => {
   }, [api]);
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full lg:h-full h-[989px]">
       <Carousel
         opts={{ loop: true, align: "start" }}
         className="w-full h-full" // Add 'relative' for button positioning
@@ -185,27 +182,21 @@ const HomeUtilities = () => {
           ))}
         </div>
 
-        {/* Arrow Buttons (Visible on all sizes) */}
-        <CarouselPrevious 
-          className="
-            absolute left-2 top-1/2 -translate-y-1/2 z-10 
-            text-white bg-black/20 hover:bg-black/50 
-            border-white/30 hover:border-white
-            lg:left-12 /* Move further out on desktop */
-          "
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </CarouselPrevious>
-        <CarouselNext 
-          className="
-            absolute right-2 top-1/2 -translate-y-1/2 z-10 
-            text-white bg-black/20 hover:bg-black/50 
-            border-white/30 hover:border-white
-            lg:right-12 /* Move further out on desktop */
-          "
-        >
-          <ChevronRight className="w-6 h-6" />
-        </CarouselNext>
+        {/* Dots (Mobile only) */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10 lg:hidden">
+          {UTILITIES.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => api?.scrollTo(i)}
+              className={
+                i === selectedIndex
+                  ? 'h-2 w-6 rounded-full bg-white/90 transition-all'
+                  : 'h-2 w-2 rounded-full bg-white/50 transition-all'
+              }
+            />
+          ))}
+        </div>
 
       </Carousel>
     </div>

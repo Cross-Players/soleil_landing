@@ -54,11 +54,22 @@ const HomeBanner = () => {
   }, [api])
 
   return (
-    <div className="w-full h-[70vh] md:h-screen relative">
+    <div className="w-full h-[600px] lg:h-screen relative">
       {/* H1 Tag for SEO - Screen reader accessible */}
       <h1 className="sr-only">The Soleil Đà Nẵng - Wyndham Soleil Đà Nẵng</h1>
       
-      <Carousel opts={{ loop: true, align: 'start' }} className="w-full h-full" setApi={setApi}>
+      {/* Background for mobile */}
+      <div
+        className="lg:hidden absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url(/images/home/cover-footer.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+      
+      <Carousel opts={{ loop: true, align: 'start' }} className="w-full h-full relative z-10" setApi={setApi}>
         <CarouselContent>
           {IMAGES.map((src, idx) => (
             <CarouselItem key={src} className="w-full h-full relative">
@@ -68,7 +79,7 @@ const HomeBanner = () => {
                 fill
                 priority={idx === 0}
                 sizes="100vw"
-                className="object-cover"
+                className="lg:object-cover object-contain"
               />
             </CarouselItem>
           ))}
