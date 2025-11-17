@@ -25,40 +25,23 @@ const ProjectOverview = () => {
         transition: "opacity .5s ease",
       }}
     >
-      {/* Container with padding (pt-32).
-        CHANGED: Reduced main gap from 'gap-8' to 'gap-4' to move button closer.
-      */}
+      {/* Container với padding (pt-32) và gap-4 (cho nút bấm sát hơn) */}
       <div className="container mx-auto max-w-7xl h-full px-4 lg:px-8 pt-32 pb-16 flex flex-col justify-center items-center gap-4">
 
-        {/* --- 1. TITLE (MODIFIED) --- */}
-        {/* CHANGED: Title is now smaller (text-2xl lg:text-3xl) */}
+        {/* --- 1. TITLE (Đã thu nhỏ) --- */}
         <h2 className={`text-2xl lg:text-3xl font-bold uppercase mb-4 text-center lg:text-left w-full ${valueGradientClass}`}>
           {t('title')}
         </h2>
 
-        {/* --- 2. MAIN CONTENT BLOCK (Image + Text) --- */}
-        <div className="w-full flex flex-col lg:flex-row justify-center items-start gap-12 lg:gap-16">
+        {/* --- 2. MAIN CONTENT BLOCK (ĐÃ ĐẢO NGƯỢC THỨ TỰ) --- */}
+        {/* SỬA LỖI Ở ĐÂY:
+          - Dùng 'flex-col-reverse' (Mobile: Thông tin ở dưới, Ảnh ở trên)
+          - Dùng 'lg:flex-row' (Desktop: Ảnh bên trái, Thông tin bên phải)
+        */}
+        <div className="w-full flex flex-col-reverse lg:flex-row justify-center items-start gap-12 lg:gap-16">
           
-          {/* === 2a. LEFT SIDE: Image Block === */}
-          {/* This block is hidden on mobile ('hidden lg:flex') */}
-          <div className="hidden lg:w-2/5 w-full lg:flex relative flex-col justify-center items-center">
-            <div className="relative w-full rounded-lg overflow-hidden shadow-2xl">
-              <Image
-                src={newStaticImage}
-                alt="Update video"
-                width={800} // Original aspect ratio width
-                height={454} // Original aspect ratio height
-                className="w-full h-auto object-contain" // Keeps aspect ratio
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
-            </div>
-          </div>
-          
-          {/* === 2b. RIGHT SIDE: Info Text Block === */}
-          {/* This block is 100% width on mobile, 60% on desktop */}
+          {/* === 2a. KHỐI THÔNG TIN (BÊN PHẢI Desktop / BÊN DƯỚI Mobile) === */}
           <div className="lg:w-3/5 w-full text-white">
-            
-            {/* The main title <h2_> has been REMOVED from here */}
             
             {/* Info text (smaller text) */}
             <div className="space-y-3 text-sm md:text-base">
@@ -108,10 +91,24 @@ const ProjectOverview = () => {
             </div>
           </div>
 
+          {/* === 2b. KHỐI ẢNH (BÊN TRÁI Desktop / BÊN TRÊN Mobile) === */}
+          {/* SỬA LỖI Ở ĐÂY: Xóa 'hidden' */}
+          <div className="lg:w-2/5 w-full flex relative flex-col justify-center items-center">
+            <div className="relative w-full rounded-lg overflow-hidden shadow-2xl">
+              <Image
+                src={newStaticImage}
+                alt="Update video"
+                width={800} // Original aspect ratio width
+                height={454} // Original aspect ratio height
+                className="w-full h-auto object-contain" // Keeps aspect ratio
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
+          </div>
+          
         </div>
 
         {/* === 3. BUTTON BLOCK (Centered) === */}
-        {/* This is now closer to the content above because the container 'gap' was reduced */}
         <div className="w-full flex justify-center">
           <Link
             href="/connection" // <-- Link is now correct
