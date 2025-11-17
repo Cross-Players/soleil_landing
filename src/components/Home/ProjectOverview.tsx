@@ -25,16 +25,22 @@ const ProjectOverview = () => {
         transition: "opacity .5s ease",
       }}
     >
-      {/* Container với padding đã sửa (pt-32) từ lần trước */}
-      <div className="container mx-auto max-w-7xl h-full px-4 lg:px-8 pt-32 pb-16 flex flex-col justify-center items-center gap-12">
+      {/* Container with padding (pt-32).
+        CHANGED: Reduced main gap from 'gap-8' to 'gap-4' to move button closer.
+      */}
+      <div className="container mx-auto max-w-7xl h-full px-4 lg:px-8 pt-32 pb-16 flex flex-col justify-center items-center gap-4">
 
+        {/* --- 1. TITLE (MODIFIED) --- */}
+        {/* CHANGED: Title is now smaller (text-2xl lg:text-3xl) */}
+        <h2 className={`text-2xl lg:text-3xl font-bold uppercase mb-4 text-center lg:text-left w-full ${valueGradientClass}`}>
+          {t('title')}
+        </h2>
+
+        {/* --- 2. MAIN CONTENT BLOCK (Image + Text) --- */}
         <div className="w-full flex flex-col lg:flex-row justify-center items-start gap-12 lg:gap-16">
           
-          {/* === 1. KHỐI ẢNH (BÊN TRÁI) === */}
-          {/* SỬA LỖI Ở ĐÂY:
-            - Thêm 'hidden' (ẩn mặc định - trên mobile)
-            - Giữ 'lg:flex' (hiện lại trên desktop)
-          */}
+          {/* === 2a. LEFT SIDE: Image Block === */}
+          {/* This block is hidden on mobile ('hidden lg:flex') */}
           <div className="hidden lg:w-2/5 w-full lg:flex relative flex-col justify-center items-center">
             <div className="relative w-full rounded-lg overflow-hidden shadow-2xl">
               <Image
@@ -48,19 +54,13 @@ const ProjectOverview = () => {
             </div>
           </div>
           
-          {/* === 2. KHỐI THÔNG TIN (BÊN PHẢI) === */}
-          {/* KHÔNG CẦN SỬA GÌ Ở ĐÂY:
-            - Class 'w-full' sẽ tự động chiếm 100% trên mobile (vì ảnh đã bị ẩn)
-            - Class 'lg:w-3/5' sẽ chiếm 60% trên desktop
-          */}
+          {/* === 2b. RIGHT SIDE: Info Text Block === */}
+          {/* This block is 100% width on mobile, 60% on desktop */}
           <div className="lg:w-3/5 w-full text-white">
             
-            {/* Title (Đã thu nhỏ từ lần trước) */}
-            <h2 className={`text-3xl lg:text-4xl font-bold uppercase mb-6 text-center lg:text-left ${valueGradientClass}`}>
-              {t('title')}
-            </h2>
+            {/* The main title <h2_> has been REMOVED from here */}
             
-            {/* Info text (Đã thu nhỏ từ lần trước) */}
+            {/* Info text (smaller text) */}
             <div className="space-y-3 text-sm md:text-base">
               <p><strong className="font-semibold text-white mr-2">{t('tradeName_label')}</strong> <span className="text-white">{t('tradeName_value')}</span></p>
               <p><strong className="font-semibold text-white mr-2">{t('investor_label')}</strong> <span className="text-white">{t('investor_value')}</span></p>
@@ -72,7 +72,7 @@ const ProjectOverview = () => {
             {/* Gold horizontal line */}
             <hr className="my-6 border-[#E3C284]/50" />
 
-            {/* Tower Section (Đã thu nhỏ) */}
+            {/* Tower Section (smaller text) */}
             <div className="flex w-full justify-between text-center px-2">
               <div>
                 <p className="text-white font-semibold text-xs md:text-sm">{t('tower_a1_label')}</p>
@@ -95,7 +95,7 @@ const ProjectOverview = () => {
             {/* Gold horizontal line */}
             <hr className="my-6 border-[#E3C284]/50" />
 
-            {/* Apartment Types (Đã thu nhỏ) */}
+            {/* Apartment Types (smaller text) */}
             <h3 className="text-lg md:text-xl font-bold uppercase mt-6 text-white">{t('apartmentTypes_title')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mt-4 text-sm md:text-base">
               <p>• <span className="text-white">{t('apt_studio')}:</span> <span className={valueGradientClass}>{t('apt_studio_size')}</span></p>
@@ -110,10 +110,11 @@ const ProjectOverview = () => {
 
         </div>
 
-        {/* Nút "XEM CHI TIẾT" (Vẫn ở giữa) */}
+        {/* === 3. BUTTON BLOCK (Centered) === */}
+        {/* This is now closer to the content above because the container 'gap' was reduced */}
         <div className="w-full flex justify-center">
           <Link
-            href="/introduction" // Sửa link này nếu bạn muốn
+            href="/connection" // <-- Link is now correct
             className="w-fit px-8 py-2 rounded border border-white text-white uppercase font-medium transition-all duration-300 hover:bg-white hover:text-black hover:border-white flex-shrink-0"
           >
             {tGallery("viewDetails")} {/* Uses 'gallery' namespace */}
