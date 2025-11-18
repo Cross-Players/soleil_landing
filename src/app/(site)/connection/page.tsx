@@ -52,14 +52,14 @@ interface LocationItem {
 }
 
 const locations: LocationItem[] = [
-  { key: 'mykhe', imageSrc: '/images/home/banner-1.jpg' },
-  { key: 'sontra', imageSrc: '/images/home/banner-3.jpg' },
-  { key: 'bana', imageSrc: '/images/home/banner-1.jpg' },
-  { key: 'airport', imageSrc: '/images/home/banner-2.png' },
-  { key: 'hue', imageSrc: '/images/home/banner-2.png' },
-  { key: 'hoian', imageSrc: '/images/home/banner-4.jpg' },
-  { key: 'golf', imageSrc: '/images/home/banner-4.jpg' },
-  { key: 'myson', imageSrc: '/images/home/banner-3.jpg' }
+  { key: 'mykhe', imageSrc: '/images/home/mykhe.jpg' },
+  { key: 'sontra', imageSrc: '/images/home/son tra.jpeg' },
+  { key: 'bana', imageSrc: '/images/home/bana.jpg' },
+  { key: 'airport', imageSrc: '/images/home/sanbay.jpg' },
+  { key: 'hue', imageSrc: '/images/home/codo.jpg' },
+  { key: 'hoian', imageSrc: '/images/home/phoco.jpg' },
+  { key: 'golf', imageSrc: '/images/home/golf.jpg' },
+  { key: 'myson', imageSrc: '/images/home/thanhdia.jpg' }
 ];
 
 

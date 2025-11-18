@@ -1,131 +1,107 @@
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import AnimateInView from '@/components/shared/AnimateInView';
-import type { Metadata } from 'next';
+import { Playfair_Display } from 'next/font/google';
 
-export async function generateMetadata({
-  params
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Introduction' });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thesoleil.vn'
-  const localeUrl = locale === 'vi' ? `${baseUrl}/introduction` : `${baseUrl}/${locale}/introduction`
-  
-  return {
-    title: t('hero_title'),
-    description: `${t('main_heading')}. ${t('section1_content').substring(0, 150)}...`,
-    alternates: {
-      canonical: localeUrl,
-      languages: {
-        'vi': `${baseUrl}/introduction`,
-        'en': `${baseUrl}/en/introduction`,
-        [locale]: localeUrl, // Self-referential alternate link
-        'x-default': `${baseUrl}/introduction`,
-      },
-    },
-    openGraph: {
-      title: t('hero_title'),
-      description: `${t('main_heading')}. ${t('section1_content').substring(0, 150)}...`,
-      url: localeUrl,
-      images: [
-        {
-          url: `${baseUrl}/images/home/banner-4.jpg`,
-          width: 1200,
-          height: 630,
-          alt: t('hero_title'),
-        },
-      ],
-    },
-  };
-}
-
-// Định nghĩa dữ liệu cấu trúc cho các phần nội dung
-const introductionSections = [
-  {
-    titleKey: 'section1_title',
-    contentKey: 'section1_content',
-    imageSrc: '/images/home/banner-1.jpg', // Ảnh từ dự án của bạn
-    delay: 100, // Độ trễ hiệu ứng
-  },
-  {
-    titleKey: 'section2_title',
-    contentKey: 'section2_content',
-    imageSrc: '/images/home/banner-3.jpg', // Ảnh từ dự án của bạn
-    reverse: true, // Đảo ngược thứ tự ảnh và nội dung
-    delay: 300,
-  },
-  {
-    titleKey: 'section3_title', // BỔ SUNG SECTION 3
-    contentKey: 'section3_content',
-    imageSrc: '/images/home/banner-2.png', // Ảnh từ dự án của bạn
-    delay: 500,
-  },
-];
+// Font configuration
+const playfair = Playfair_Display({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['700'],
+});
 
 const IntroductionPage = async () => {
   const t = await getTranslations('Introduction');
 
+  // Section Data
+  const sections = [
+    {
+      titleKey: 'section1_title',
+      contentKey: 'section1_content',
+      imageSrc: '/images/home/introduction1.jpg', // Ensure file exists
+      delay: 100,
+    },
+    {
+      titleKey: 'section2_title',
+      contentKey: 'section2_content',
+      imageSrc: '/images/home/introduction2.png', // Updated to .png per request
+      reverse: true,
+      delay: 300,
+    },
+    {
+      titleKey: 'section3_title',
+      contentKey: 'section3_content',
+      imageSrc: '/images/home/banner-1.jpg', // Or introduction3.jpg
+      delay: 500,
+    },
+  ];
+
   return (
     <div className="bg-white min-h-screen">
-      {/* 1. Hero Section/Banner */}
+      {/* --- Hero Section --- */}
       <div className="relative h-[400px] w-full overflow-hidden">
         <Image 
             src="/images/home/banner-4.jpg" 
-            alt={t('hero_title') as string} // SỬA LỖI TYPESCRIPT
+            alt={t('hero_title')}
             fill
             priority
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, 100vw"
+            sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white uppercase text-center max-w-4xl px-4">
+          <h1 className={`
+            text-4xl md:text-6xl text-white uppercase text-center max-w-4xl px-4 
+            ${playfair.className} leading-relaxed tracking-wide
+          `}>
             {t('hero_title')}
           </h1>
         </div>
       </div>
 
-      {/* 2. Main Content Sections */}
-      <div className="container mx-auto px-4 py-16 max-w-7xl">
-        {/* Tiêu đề chính (Thêm hiệu ứng) */}
-        <AnimateInView delay={0}> 
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-12 text-center border-b-2 border-primary-500 pb-4">
-            {t('main_heading')}
-          </h2>
-        </AnimateInView>
+      {/* --- Main Content --- */}
+      <div className="w-full relative bg-cover bg-center bg-fixed" 
+           style={{ backgroundImage: "url(/images/home/bg-overview-project.jpg)" }}
+      >
+        <div className="absolute inset-0 bg-white/90 z-0"></div>
 
-        {introductionSections.map((section, index) => (
-          // Bọc mỗi section bằng AnimateInView (Hiệu ứng)
-          <AnimateInView key={index} delay={section.delay} className="mb-20"> 
-            <div
-              className={`flex flex-col ${section.reverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-12`}
-            >
-              {/* Khối Ảnh */}
-              <div className="md:w-1/2 w-full">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
-                  <Image 
-                      src={section.imageSrc} 
-                      alt={t(section.titleKey) as string} // SỬA LỖI TYPESCRIPT
-                      fill 
-                      className="object-cover transition duration-500 hover:scale-105" // Hiệu ứng trên ảnh
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
-              
-              {/* Khối Nội dung */}
-              <div className="md:w-1/2 w-full">
-                <h3 className="text-2xl font-bold text-primary-600 mb-4 border-l-4 border-primary-500 pl-4">
-                  {t(section.titleKey)}
-                </h3>
-                <p className="text-gray-600 leading-relaxed whitespace-pre-line">
-                  {t(section.contentKey)}
-                </p>
-              </div>
-            </div>
+        <div className="container mx-auto px-4 py-16 max-w-7xl relative z-10">
+          <AnimateInView delay={0}> 
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-16 text-center border-b-2 border-primary-500 pb-4 inline-block relative left-1/2 -translate-x-1/2">
+              {t('main_heading')}
+            </h2>
           </AnimateInView>
-        ))}
+
+          {/* Render Sections */}
+          {sections.map((section, index) => (
+            <AnimateInView key={index} delay={section.delay} className="mb-24 last:mb-0"> 
+              <div className={`flex flex-col ${section.reverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-12`}>
+                
+                {/* Image Block */}
+                <div className="md:w-1/2 w-full">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl border-4 border-white/50">
+                    <Image 
+                        src={section.imageSrc} 
+                        alt={t(section.titleKey)}
+                        fill 
+                        className="object-cover transition duration-500 hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+                
+                {/* Text Block */}
+                <div className="md:w-1/2 w-full">
+                  <h3 className="text-2xl font-bold text-primary-700 mb-4 border-l-4 border-primary-500 pl-4 uppercase">
+                    {t(section.titleKey)}
+                  </h3>
+                  <p className="text-gray-800 leading-relaxed whitespace-pre-line text-justify font-medium text-lg">
+                    {t(section.contentKey)}
+                  </p>
+                </div>
+
+              </div>
+            </AnimateInView>
+          ))}
+        </div>
       </div>
     </div>
   );
