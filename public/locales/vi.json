@@ -70,6 +70,7 @@
     "location_golf_time": "CÁC SÂN GOLF",
     "location_golf_desc": "Là nơi dừng chân lý tưởng của các Golf thủ với các sân Golf lân cận như Montgomerie Links, Bà Nà Hills Golf Club, BRG Da Nang Golf."
   },
+  
   "Apartment": {
     "hero_title": "CĂN HỘ",
     "select_label": "CHỌN TẦNG",
@@ -89,7 +90,9 @@
     "pagination_next": "Trang sau",
     "pagination_page": "Trang"
   },
+  
   "partners": {
+    "hero_title": "ĐỐI TÁC",
     "partners-title-1": "Đơn vị thiết kế Aedas",
     "partners-description-1": "Aedas là một trong những công ty thiết kế kiến trúc hàng đầu thế giới. Công ty được xây dựng từ triết lý thiết kế tuyệt vời chỉ được sản sinh bởi những con người thực sự hiểu về văn hóa và xã hội mà cộng đồng sinh sống trong đó xây dựng. Aedas sở hữu những tài năng hàng đầu trong ngành, luôn nỗ lực học hỏi và cập nhật thông tin mới nhất và phương pháp độc quyền để cho ra đời những thiết kế biểu tượng thế giới. Wyndham Soleil Đà Nẵng là dự án đầu tiên ở Việt Nam với hồ bơi vô cực và thiết kế thông minh bởi đội ngũ Aedas.",
     "partners-title-2": "Đơn vị vận hành Wyndham Hotel Group",
