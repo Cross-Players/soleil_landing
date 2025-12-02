@@ -36,7 +36,7 @@ const Partners = () => {
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
   return (
-    <div className="w-full h-full flex flex-col lg:flex-row">
+    <div className="w-full h-full flex flex-col lg:flex-row" id="partners">
       {PARTNERS.map((partner, index) => {
         const isFocused = focusedIndex === index;
         const hasFocused = focusedIndex !== null;

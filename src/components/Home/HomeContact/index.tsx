@@ -116,6 +116,7 @@ const HomeContact = () => {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
+      id="contact"
     >
       <div className="absolute inset-0 bg-[#1a4d4d]/80"></div>
       <div className="container mx-auto max-w-7xl px-4 relative z-10">

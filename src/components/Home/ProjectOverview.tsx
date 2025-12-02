@@ -24,6 +24,7 @@ const ProjectOverview = () => {
         backgroundRepeat: "no-repeat",
         transition: "opacity .5s ease",
       }}
+      id="overview"
     >
       {/* Container với padding (pt-32) và gap-4 (cho nút bấm sát hơn) */}
       <div className="container mx-auto max-w-7xl h-full px-4 lg:px-8 pt-32 pb-16 flex flex-col justify-center items-center gap-4">

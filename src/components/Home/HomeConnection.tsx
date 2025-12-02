@@ -59,7 +59,7 @@ const HomeConnection = () => {
   }, [api])
 
   return (
-    <div className="w-full lg:h-screen h-[600px] relative">
+    <div className="w-full lg:h-screen h-[600px] relative" id="connection">
       {/* Background for mobile */}
       <div
         className="lg:hidden absolute inset-0 z-0"

@@ -11,11 +11,13 @@ import HomeNews from "./HomeNews";
 import HomePartners from "./HomePartners";
 import HomeUtilities from "./HomeUtilities";
 import ProjectOverview from "./ProjectOverview";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const Home = () => {
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const carouselContainerRef = useRef<HTMLDivElement>(null);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const slides = [
     HomeBanner,
     ProjectOverview,
@@ -78,9 +80,9 @@ const Home = () => {
     };
   }, [api]);
 
-  return (
-    <>
-      <div ref={carouselContainerRef} className="lg:block hidden w-screen h-screen overflow-hidden">
+  if (isDesktop) {
+    return (
+      <div ref={carouselContainerRef} className="w-screen h-screen overflow-hidden">
         <Carousel
           opts={{ loop: false, align: "start", dragFree: false }}
           orientation="vertical"
@@ -112,16 +114,19 @@ const Home = () => {
           </div>
         </Carousel>
       </div>
-      <div className="lg:hidden block overflow-hidden">
-        <HomeBanner />
-        <ProjectOverview />
-        <HomeConnection />
-        <HomePartners />
-        <HomeUtilities />
-        <HomeGallery />
-        <HomeContact />
-      </div>
-    </>
+    );
+  }
+
+  return (
+    <div className="overflow-hidden">
+      <HomeBanner />
+      <ProjectOverview />
+      <HomeConnection />
+      <HomePartners />
+      <HomeUtilities />
+      <HomeGallery />
+      <HomeContact />
+    </div>
   );
 };
 
