@@ -75,7 +75,7 @@ const HomeUtilities = () => {
   }, [api]);
 
   return (
-    <div className="w-full lg:h-full h-[989px]">
+    <div className="w-full lg:h-full h-[989px]" id="utilities">
       <Carousel
         opts={{ loop: true, align: "start" }}
         className="w-full h-full" // Add 'relative' for button positioning
