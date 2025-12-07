@@ -18,13 +18,14 @@ const Header: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
   const t = useTranslations('header.menu');
+//Adding ID 
 
-  const navLinks = [
+
+  const navLinks = [     
     { href: '#overview', label: t('introduction') },
     { href: '#connection', label: t('connection') },
     { href: '#partners', label: t('partners') },
     { href: '#utilities', label: t('facility') },
-    { href: '#apartment', label: t('apartment') }, 
     { href: '/news', label: t('news') },          
     { href: '#gallery', label: t('gallery') },
     { href: '#contact', label: t('contactUs') },

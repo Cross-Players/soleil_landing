@@ -5,11 +5,10 @@
   },
   "header": {
     "menu": {
-      "introduction": "Giới thiệu",
-      "connection": "Kết nối",
+      "introduction": "Tổng quan",
+      "connection": "Căn hộ",
       "partners": "Đối tác",
       "facility": "Tiện ích",
-      "apartment": "Căn hộ",
       "news": "Tin tức",
       "gallery": "Thư viện",
       "contactUs": "Liên hệ"
