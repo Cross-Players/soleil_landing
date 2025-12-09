@@ -56,8 +56,19 @@ This guide will help you set up the Google Sheets integration for the contact fo
 ## Troubleshooting
 
 - **403 Forbidden Error**: Make sure you set "Who has access" to "Anyone" in the Apps Script deployment
-- **Data not appearing**: Check the browser console and server logs for errors
+- **Data not appearing**: 
+  - Check the browser console (F12) for any errors
+  - Check your server logs (terminal where you run `npm run dev`) for detailed error messages
+  - Verify that `GOOGLE_SCRIPT_URL` is set correctly in your `.env.local` file
+  - Make sure you've redeployed the Google Apps Script after making any changes
+  - Check the Apps Script execution logs: In Google Apps Script editor, go to "Executions" to see if there are any errors
 - **CORS errors**: The Google Apps Script should handle CORS automatically, but make sure the deployment is set to "Anyone"
+- **"Post success but no data added"**:
+  1. **Redeploy the script**: After updating `google-apps-script.js`, you MUST create a new deployment or update the existing one
+  2. **Check script permissions**: Make sure the script has permission to edit the spreadsheet
+  3. **Verify the script is bound to the correct sheet**: The script must be created from within the Google Sheet (Extensions > Apps Script)
+  4. **Check execution logs**: In Apps Script editor, go to "Executions" tab to see detailed error messages
+  5. **Test the script manually**: Use the `testDoPost()` function in the Apps Script editor to verify it works
 
 ## Notes
 

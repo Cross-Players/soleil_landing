@@ -38,6 +38,8 @@ export async function POST(request: NextRequest) {
     };
 
     // Send data to Google Apps Script Web App
+    console.log('Sending data to Google Sheets:', { url: GOOGLE_SCRIPT_URL, payload });
+    
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       headers: {
@@ -47,6 +49,7 @@ export async function POST(request: NextRequest) {
     });
 
     const responseText = await response.text();
+    console.log('Google Sheets response:', { status: response.status, statusText: response.statusText, body: responseText });
     
     // Try to parse as JSON, but handle text responses
     let result;
@@ -57,13 +60,18 @@ export async function POST(request: NextRequest) {
       if (response.ok) {
         result = { success: true, message: responseText };
       } else {
+        console.error('Failed to parse response as JSON:', responseText);
         throw new Error(responseText || 'Failed to submit data to Google Sheets');
       }
     }
 
     // Check if the result indicates an error
     if (!response.ok || (result.success === false)) {
-      console.error('Google Sheets API error:', result);
+      console.error('Google Sheets API error:', { 
+        status: response.status, 
+        statusText: response.statusText,
+        result 
+      });
       return NextResponse.json(
         { error: result.error || 'Failed to submit data to Google Sheets' },
         { status: response.ok ? 400 : 500 }

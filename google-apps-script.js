@@ -18,8 +18,18 @@
 
 function doPost(e) {
   try {
-    // Get the active spreadsheet
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    // Get the spreadsheet - use getActiveSpreadsheet() to get the bound spreadsheet
+    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    
+    // Get the first sheet (index 0) - this is more reliable than getActiveSheet()
+    // If you need a specific sheet by name, use: spreadsheet.getSheetByName('Sheet1')
+    const sheet = spreadsheet.getSheets()[0];
+    
+    if (!sheet) {
+      return ContentService.createTextOutput(
+        JSON.stringify({ success: false, error: 'No sheet found' })
+      ).setMimeType(ContentService.MimeType.JSON);
+    }
     
     // Parse the incoming data
     const data = JSON.parse(e.postData.contents);
@@ -32,9 +42,17 @@ function doPost(e) {
       ).setMimeType(ContentService.MimeType.JSON);
     }
     
-    // Get the last row to calculate the next index (STT)
+    // Get the last row with data (header is row 1, so data starts at row 2)
     const lastRow = sheet.getLastRow();
-    const nextIndex = lastRow; // This will be the row number (STT column A)
+    
+    // Calculate the next STT (index)
+    // If lastRow is 1 (only header), next STT is 1
+    // If lastRow is 6 (header + 5 data rows), next STT is 5 (since row 2 has STT=1, row 6 has STT=5)
+    // So next STT = lastRow (which will be the row number, and STT = row number - 1 for data rows)
+    // Actually, looking at the sheet structure: row 2 has STT=1, row 3 has STT=2, etc.
+    // So STT = lastRow - 1 (since header is row 1)
+    // Next STT = lastRow (since we're adding to row lastRow + 1)
+    const nextIndex = lastRow; // This will be the STT value for the new row
     
     // Prepare the row data: [STT, Họ và tên, Số điện thoại, Email, Tin nhắn]
     const rowData = [
@@ -53,11 +71,16 @@ function doPost(e) {
       JSON.stringify({ 
         success: true, 
         message: 'Data added successfully',
-        index: nextIndex
+        index: nextIndex,
+        row: lastRow + 1
       })
     ).setMimeType(ContentService.MimeType.JSON);
     
   } catch (error) {
+    // Log error for debugging
+    Logger.log('Error in doPost: ' + error.toString());
+    Logger.log('Stack: ' + error.stack);
+    
     // Return error response
     return ContentService.createTextOutput(
       JSON.stringify({ 
