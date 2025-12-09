@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState, useRef } from "react";
+import dynamic from "next/dynamic";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import HomeBanner from "./HomeBanner";
 import HomeConnection from "./HomeConnection";
@@ -12,6 +13,12 @@ import HomePartners from "./HomePartners";
 import HomeUtilities from "./HomeUtilities";
 import ProjectOverview from "./ProjectOverview";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+
+// Dynamic import ContactPopup only on client (no SSR)
+const ContactPopup = dynamic(
+  () => import('@/components/ContactPopup/ContactPopup'),
+  { ssr: false }
+);
 
 const Home = () => {
   const [api, setApi] = useState<CarouselApi | null>(null);
@@ -113,6 +120,9 @@ const Home = () => {
             ))}
           </div>
         </Carousel>
+
+        {/* Mount ContactPopup only on Home (client-only) */}
+        <ContactPopup />
       </div>
     );
   }
@@ -126,6 +136,9 @@ const Home = () => {
       <HomeUtilities />
       <HomeGallery />
       <HomeContact />
+
+      {/* Mount ContactPopup for non-desktop Home as well */}
+      <ContactPopup />
     </div>
   );
 };
