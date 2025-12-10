@@ -5,10 +5,10 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, email, phone, message } = body;
 
-    // Validate required fields
-    if (!name || !email || !phone || !message) {
+    // Validate required fields (only name and phone are required)
+    if (!name || !phone) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: 'Name and phone are required' },
         { status: 400 }
       );
     }
@@ -30,11 +30,12 @@ export async function POST(request: NextRequest) {
     // For now, we'll let Google Apps Script handle the index calculation
     
     // Prepare data to send to Google Sheets
+    // Email and message are optional, use empty string if not provided
     const payload = {
       name: name.trim(),
-      email: email.trim(),
+      email: email ? email.trim() : '',
       phone: phone.trim(),
-      message: message.trim(),
+      message: message ? message.trim() : '',
     };
 
     // Send data to Google Apps Script Web App
