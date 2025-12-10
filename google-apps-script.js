@@ -35,10 +35,10 @@ function doPost(e) {
     const data = JSON.parse(e.postData.contents);
     const { name, email, phone, message } = data;
     
-    // Validate required fields
-    if (!name || !email || !phone || !message) {
+    // Validate required fields (only name and phone are required)
+    if (!name || !phone) {
       return ContentService.createTextOutput(
-        JSON.stringify({ success: false, error: 'Missing required fields' })
+        JSON.stringify({ success: false, error: 'Missing required fields: name and phone are required' })
       ).setMimeType(ContentService.MimeType.JSON);
     }
     
@@ -55,12 +55,13 @@ function doPost(e) {
     const nextIndex = lastRow; // This will be the STT value for the new row
     
     // Prepare the row data: [STT, Họ và tên, Số điện thoại, Email, Tin nhắn]
+    // Email and message are optional, use empty string if not provided
     const rowData = [
       nextIndex,           // Column A: STT (index)
       name,                // Column B: Họ và tên
       phone,               // Column C: Số điện thoại
-      email,               // Column D: Email
-      message              // Column E: Tin nhắn
+      email || '',         // Column D: Email (optional)
+      message || ''        // Column E: Tin nhắn (optional)
     ];
     
     // Append the new row to the sheet

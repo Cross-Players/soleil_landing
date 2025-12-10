@@ -1,43 +1,58 @@
 "use client";
 
 import React, { useState } from "react";
-import { useTranslations, useLocale } from "next-intl";
-// import { validateEmail } from "@/components/utils/validateEmail"; // Removed validation import
+import { useTranslations } from "next-intl";
+import { validateEmail } from "@/components/utils/validateEmail";
 import { Facebook, Instagram, Youtube } from "lucide-react";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import toast from "react-hot-toast";
 
 const HomeContact = () => {
   const t = useTranslations("contact");
   const locale = useLocale();
-  
-  // State for form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
-
-  // State for submission status
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Handle input changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // --- VALIDATION REMOVED ---
-    // User can submit empty forms now.
-    
-    // --- API SUBMISSION ---
+    const newErrors: Record<string, string> = {};
+
+    // Validation (only name and phone are required)
+    if (!formData.name.trim()) {
+      newErrors.name = t("errors.nameRequired");
+    }
+    // Email is optional, but if provided, validate format
+    if (formData.email.trim() && !validateEmail(formData.email)) {
+      newErrors.email = t("errors.emailInvalid");
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = t("errors.phoneRequired");
+    }
+    // Message is optional, no validation needed
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    // Submit to API
     setIsSubmitting(true);
     try {
       const response = await fetch("/api/submit-contact", {
@@ -54,7 +69,7 @@ const HomeContact = () => {
         throw new Error(data.error || "Failed to submit form");
       }
 
-      // Success Notification
+      // Success
       toast.success(
         locale === "vi"
           ? "Gửi form thành công! Cảm ơn bạn đã liên hệ."
@@ -63,13 +78,18 @@ const HomeContact = () => {
       
       // Reset form
       setFormData({ name: "", email: "", phone: "", message: "" });
-
+      setErrors({});
     } catch (error) {
       console.error("Error submitting form:", error);
       const errorMessage = error instanceof Error ? error.message : "Unknown error";
       
-      if (errorMessage.includes("GOOGLE_SCRIPT_URL")) {
-        toast.error("Server configuration error. Please check logs.");
+      // Show more helpful error message
+      if (errorMessage.includes("GOOGLE_SCRIPT_URL") || errorMessage.includes("not configured")) {
+        toast.error(
+          locale === "vi"
+            ? "Cấu hình chưa hoàn tất. Vui lòng kiểm tra file .env.local và xem hướng dẫn trong GOOGLE_SHEETS_SETUP.md"
+            : "Configuration incomplete. Please check your .env.local file and see GOOGLE_SHEETS_SETUP.md for instructions"
+        );
       } else {
         toast.error(
           locale === "vi"
@@ -93,24 +113,17 @@ const HomeContact = () => {
       }}
       id="contact"
     >
-      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-[#1a4d4d]/80"></div>
-      
       <div className="container mx-auto max-w-7xl px-4 relative z-10">
-        <div className="mx-auto">
-          
-          {/* Header Title */}
+        <div className=" mx-auto">
           <div className="flex flex-col items-center mb-8">
             <h2 className="text-2xl md:text-[28px] font-black leading-[50px] text-white text-center relative pb-4 after:content-[''] after:w-[100px] after:h-[2px] after:bg-white after:bottom-0 after:left-1/2 after:absolute after:-translate-x-1/2">
               {t("title")}
             </h2>
           </div>
 
-          {/* Contact Form */}
           <form onSubmit={handleSubmit} className="mb-6 max-w-4xl mx-auto">
             <div className="space-y-4">
-              
-              {/* Name Input */}
               <div>
                 <input
                   type="text"
@@ -120,9 +133,11 @@ const HomeContact = () => {
                   placeholder={t("form.name")}
                   className="w-full bg-transparent border-0 border-b-2 border-white/50 text-white placeholder:text-white/70 focus:border-white focus:outline-none pb-2 transition-colors"
                 />
+                {errors.name && (
+                  <p className="text-red-300 text-sm mt-1">{errors.name}</p>
+                )}
               </div>
 
-              {/* Email Input */}
               <div>
                 <input
                   type="email"
@@ -132,9 +147,11 @@ const HomeContact = () => {
                   placeholder={t("form.email")}
                   className="w-full bg-transparent border-0 border-b-2 border-white/50 text-white placeholder:text-white/70 focus:border-white focus:outline-none pb-2 transition-colors"
                 />
+                {errors.email && (
+                  <p className="text-red-300 text-sm mt-1">{errors.email}</p>
+                )}
               </div>
 
-              {/* Phone Input */}
               <div>
                 <input
                   type="tel"
@@ -144,9 +161,11 @@ const HomeContact = () => {
                   placeholder={t("form.phone")}
                   className="w-full bg-transparent border-0 border-b-2 border-white/50 text-white placeholder:text-white/70 focus:border-white focus:outline-none pb-2 transition-colors"
                 />
+                {errors.phone && (
+                  <p className="text-red-300 text-sm mt-1">{errors.phone}</p>
+                )}
               </div>
 
-              {/* Message Input */}
               <div>
                 <textarea
                   name="message"
@@ -156,13 +175,14 @@ const HomeContact = () => {
                   rows={4}
                   className="w-full bg-transparent border-0 border-b-2 border-white/50 text-white placeholder:text-white/70 focus:border-white focus:outline-none pb-2 resize-none transition-colors"
                 />
+                {errors.message && (
+                  <p className="text-red-300 text-sm mt-1">{errors.message}</p>
+                )}
               </div>
-
-              {/* Submit Button */}
               <div className="flex justify-end pt-2">
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting}      
                   className="
                     border-2 border-white text-white 
                     text-sm px-6 py-2 
@@ -181,11 +201,9 @@ const HomeContact = () => {
               </div>
             </div>
           </form>
-
-          {/* Contact Info & Socials */}
           <div className="flex flex-col-reverse md:flex-row justify-between gap-8 md:gap-12 max-w-7xl mx-auto items-start text-left">
             
-            {/* 1. Contact Info Block */}
+            {/* 1. KHỐI THÔNG TIN */}
             <div className="space-y-4">
               <h2 className="text-white font-bold text-lg uppercase">
                 {t("info.projectName")}
@@ -222,8 +240,9 @@ const HomeContact = () => {
               </Link>
             </div>
 
-            {/* 2. Social Icons Block */}
+            {/* 2. KHỐI ICON */}
             <div className="space-y-6 flex flex-col items-start">
+              {/* Social Media Icons */}
               <div className="flex gap-4">
                 <a
                   href={t("social.facebook")}
